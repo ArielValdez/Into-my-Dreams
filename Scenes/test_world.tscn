@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cgcj1odton3th"]
+
+[node name="TestWorld" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="WorldEventTimer" type="Timer" parent="."]
