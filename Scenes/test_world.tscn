@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://cgcj1odton3th"]
+[gd_scene load_steps=2 format=3 uid="uid://cgcj1odton3th"]
+
+[ext_resource type="PackedScene" uid="uid://bq8r5i6iru2ey" path="res://Scenes/player_character.tscn" id="1_84r7b"]
 
 [node name="TestWorld" type="Node2D"]
 
@@ -6,3 +8,7 @@
 format = 2
 
 [node name="WorldEventTimer" type="Timer" parent="."]
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("1_84r7b")]
+walk_speed = 500.0
+run_speed = 750.0

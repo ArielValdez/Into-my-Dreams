@@ -22,6 +22,6 @@ func handle_animation(animationPlayer : AnimationPlayer) -> void:
 				direction = "right"
 			elif velocity.y < 0:
 				direction = "up"
-				
+			
 			animationPlayer.play("walk_" + direction)
 	pass
