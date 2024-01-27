@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://s1hc0l0p3hkr"]
+
+[ext_resource type="PackedScene" uid="uid://cgcj1odton3th" path="res://Scenes/Heritables/world_canvas.tscn" id="1_6eg5h"]
+[ext_resource type="PackedScene" uid="uid://bq8r5i6iru2ey" path="res://Scenes/player_character.tscn" id="2_n4lwj"]
+
+[node name="World1" instance=ExtResource("1_6eg5h")]
+
+[node name="PlayerCharacter" parent="." index="2" instance=ExtResource("2_n4lwj")]
+position = Vector2(344, 202)

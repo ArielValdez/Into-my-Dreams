@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 class_name Movement
 
-@export var walk_speed : float
-@export var run_speed : float
+@export var walk_speed : float = 500
+@export var run_speed : float = 750
 
 func movement() -> void:
 	move_and_slide()
@@ -23,5 +23,6 @@ func handle_animation(animationPlayer : AnimationPlayer) -> void:
 			elif velocity.y < 0:
 				direction = "up"
 			
-			animationPlayer.play("walk_" + direction)
+			if animationPlayer.has_animation("walk_" + direction):
+				animationPlayer.play("walk_" + direction)
 	pass

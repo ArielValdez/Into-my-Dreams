@@ -1,7 +1,11 @@
 extends Movement
 
+class_name PlayerCharacter
+
 var Direction : Vector2
 var PlayersCamera : Camera2D
+
+var IsAtDoor : bool = false
 
 @onready var playerAnimations : AnimationPlayer = $AnimationPlayer
 
@@ -37,3 +41,8 @@ func character_movement() -> void:
 	
 	super.handle_animation(playerAnimations)
 	super.movement()
+
+func interact_input() -> void:
+	if Input.is_action_just_pressed("accept_button"):
+		
+		pass

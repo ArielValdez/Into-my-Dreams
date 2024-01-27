@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://gsmpwvq6jehn"]
+
+[ext_resource type="PackedScene" uid="uid://062q6ss0u03g" path="res://Scenes/Heritables/world_doorway.tscn" id="1_xuvmi"]
+[ext_resource type="Texture2D" uid="uid://bko5lo4u2hk3w" path="res://Sprites/Door.png" id="2_re8pw"]
+
+[node name="TestWorldDoorway" instance=ExtResource("1_xuvmi")]
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_re8pw")
+
+[connection signal="body_entered" from="InteractionZone" to="." method="_on_interaction_zone_body_entered"]
+[connection signal="body_exited" from="InteractionZone" to="." method="_on_interaction_zone_body_exited"]

@@ -1,14 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgcj1odton3th"]
+[gd_scene load_steps=5 format=3 uid="uid://bbwb8nnmc3k7h"]
 
-[ext_resource type="PackedScene" uid="uid://bq8r5i6iru2ey" path="res://Scenes/player_character.tscn" id="1_5yeg2"]
+[ext_resource type="PackedScene" uid="uid://cgcj1odton3th" path="res://Scenes/Heritables/world_canvas.tscn" id="1_iyy7o"]
+[ext_resource type="PackedScene" uid="uid://bq8r5i6iru2ey" path="res://Scenes/player_character.tscn" id="2_4bhy8"]
+[ext_resource type="PackedScene" uid="uid://gsmpwvq6jehn" path="res://Scenes/test_world_doorway.tscn" id="3_7jgv2"]
+[ext_resource type="PackedScene" uid="uid://dfvcwbarcry1f" path="res://Scenes/Worlds/test_world_2.tscn" id="4_ebwxq"]
 
-[node name="TestWorld" type="Node2D"]
+[node name="TestWorld" instance=ExtResource("1_iyy7o")]
 
-[node name="TileMap" type="TileMap" parent="."]
-format = 2
+[node name="PlayerCharacter" parent="." index="2" instance=ExtResource("2_4bhy8")]
+position = Vector2(104, 104)
 
-[node name="WorldEventTimer" type="Timer" parent="."]
-
-[node name="PlayerCharacter" parent="." instance=ExtResource("1_5yeg2")]
-walk_speed = 500.0
-run_speed = 750.0
+[node name="TestWorldDoorway" parent="." index="3" instance=ExtResource("3_7jgv2")]
+position = Vector2(610, 214)
+OtherSide = ExtResource("4_ebwxq")

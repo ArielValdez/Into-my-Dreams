@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgcj1odton3th"]
+
+[sub_resource type="TileSet" id="TileSet_ut7xb"]
+
+[node name="TestWorld" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_ut7xb")
+format = 2
+
+[node name="WorldEventTimer" type="Timer" parent="."]

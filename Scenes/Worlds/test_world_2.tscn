@@ -1,8 +1,15 @@
-[gd_scene format=3 uid="uid://byij3cp0gs10l"]
+[gd_scene load_steps=5 format=3 uid="uid://dfvcwbarcry1f"]
 
-[node name="test_world2" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://bbwb8nnmc3k7h" path="res://Scenes/Worlds/test_world.tscn" id="1_64kpi"]
+[ext_resource type="PackedScene" uid="uid://cgcj1odton3th" path="res://Scenes/Heritables/world_canvas.tscn" id="1_hctaj"]
+[ext_resource type="PackedScene" uid="uid://bq8r5i6iru2ey" path="res://Scenes/player_character.tscn" id="2_2sep1"]
+[ext_resource type="PackedScene" uid="uid://gsmpwvq6jehn" path="res://Scenes/test_world_doorway.tscn" id="2_j0vbs"]
 
-[node name="TileMap" type="TileMap" parent="."]
-format = 2
+[node name="TestWorld2" instance=ExtResource("1_hctaj")]
 
-[node name="WorldEventTimer" type="Timer" parent="."]
+[node name="PlayerCharacter" parent="." index="2" instance=ExtResource("2_2sep1")]
+position = Vector2(456, 293)
+
+[node name="TestWorldDoorway" parent="." index="3" instance=ExtResource("2_j0vbs")]
+position = Vector2(349, 254)
+OtherSide = ExtResource("1_64kpi")
