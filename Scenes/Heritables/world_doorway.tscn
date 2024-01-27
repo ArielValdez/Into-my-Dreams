@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://062q6ss0u03g"]
+
+[ext_resource type="Script" path="res://Scripts/world_doorway.gd" id="1_6jh5w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmvwl"]
+size = Vector2(32, 29)
+
+[node name="WorldDoorway" type="StaticBody2D"]
+script = ExtResource("1_6jh5w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -35)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -14.5)
+shape = SubResource("RectangleShape2D_kmvwl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

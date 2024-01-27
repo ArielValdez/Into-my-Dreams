@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7dnfko1s5o1t"]
+
+[ext_resource type="PackedScene" uid="uid://062q6ss0u03g" path="res://Scenes/Heritables/world_doorway.tscn" id="1_1mc07"]
+[ext_resource type="Texture2D" uid="uid://bko5lo4u2hk3w" path="res://Sprites/Door.png" id="2_meyak"]
+
+[node name="Test_WorldDoorway" instance=ExtResource("1_1mc07")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_meyak")
