@@ -5,5 +5,5 @@
 
 [node name="World1" instance=ExtResource("1_6eg5h")]
 
-[node name="PlayerCharacter" parent="." index="2" instance=ExtResource("2_n4lwj")]
+[node name="PlayerCharacter" parent="." index="1" instance=ExtResource("2_n4lwj")]
 position = Vector2(344, 202)

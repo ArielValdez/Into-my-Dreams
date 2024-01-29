@@ -1,15 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfvcwbarcry1f"]
+[gd_scene load_steps=4 format=3 uid="uid://l41jpwss8eqk"]
 
-[ext_resource type="PackedScene" uid="uid://bbwb8nnmc3k7h" path="res://Scenes/Worlds/test_world.tscn" id="1_64kpi"]
-[ext_resource type="PackedScene" uid="uid://cgcj1odton3th" path="res://Scenes/Heritables/world_canvas.tscn" id="1_hctaj"]
-[ext_resource type="PackedScene" uid="uid://bq8r5i6iru2ey" path="res://Scenes/player_character.tscn" id="2_2sep1"]
-[ext_resource type="PackedScene" uid="uid://gsmpwvq6jehn" path="res://Scenes/test_world_doorway.tscn" id="2_j0vbs"]
+[ext_resource type="PackedScene" uid="uid://cgcj1odton3th" path="res://Scenes/Heritables/world_canvas.tscn" id="1_jdbdw"]
+[ext_resource type="PackedScene" uid="uid://bq8r5i6iru2ey" path="res://Scenes/player_character.tscn" id="2_5om3f"]
+[ext_resource type="PackedScene" uid="uid://gsmpwvq6jehn" path="res://Scenes/test_world_doorway.tscn" id="3_1pko6"]
 
-[node name="TestWorld2" instance=ExtResource("1_hctaj")]
+[node name="TestWorld2" instance=ExtResource("1_jdbdw")]
 
-[node name="PlayerCharacter" parent="." index="2" instance=ExtResource("2_2sep1")]
-position = Vector2(456, 293)
+[node name="PlayerCharacter" parent="." index="1" instance=ExtResource("2_5om3f")]
+position = Vector2(256, 169)
 
-[node name="TestWorldDoorway" parent="." index="3" instance=ExtResource("2_j0vbs")]
-position = Vector2(349, 254)
-OtherSide = ExtResource("1_64kpi")
+[node name="TestWorldDoorway" parent="." index="2" instance=ExtResource("3_1pko6")]
+position = Vector2(111, 89)
+TargetWorld = "test_world"

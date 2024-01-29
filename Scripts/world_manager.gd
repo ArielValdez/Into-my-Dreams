@@ -9,7 +9,8 @@ func _ready() -> void:
 	pass
 
 func _process(delta : float) -> void:
-	SpawnWorldEvents()
+	await get_tree().process_frame
+	# SpawnWorldEvents()
 	pass
 
 func SpawnWorldEvents():

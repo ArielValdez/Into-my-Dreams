@@ -2,33 +2,27 @@ extends Node2D
 
 class_name Door
 
-@export var OtherSide : PackedScene
-
-signal DoorEntered
+@export var TargetWorld : String
 
 func _ready() -> void:
-	if OtherSide == null:
-		var scene = load("res://Scenes/Worlds/world_1.tscn")
-		if scene is PackedScene:
-			OtherSide = scene
-		pass
+	pass
 
 func CrossDoorForNextWorld() -> void:
 	# play animation for enter door
 
-	get_tree().change_scene_to_packed(OtherSide)
+	get_tree().change_scene_to_file("res://Scenes/Worlds/" + TargetWorld + ".tscn")
 	pass
 
 
 func _on_interaction_zone_body_entered(body : Node2D):
 	if body.name == "PlayerCharacter":
-		if body.has_method("interact_input"):
-			DoorEntered.emit(true)
-			CrossDoorForNextWorld()
+		# body.IsAtDoor = true
 		pass
 	pass
 
 
 func _on_interaction_zone_body_exited(body : Node2D):
-	DoorEntered.emit(false)
+	if body.name == "PlayerCharacter":
+		# body.IsAtDoor = false
+		pass
 	pass

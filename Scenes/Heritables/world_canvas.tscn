@@ -1,11 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://cgcj1odton3th"]
 
-[sub_resource type="TileSet" id="TileSet_ut7xb"]
+[ext_resource type="Script" path="res://Scripts/world_manager.gd" id="1_xgiyk"]
 
 [node name="TestWorld" type="Node2D"]
-
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_ut7xb")
-format = 2
+script = ExtResource("1_xgiyk")
 
 [node name="WorldEventTimer" type="Timer" parent="."]

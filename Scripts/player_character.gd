@@ -7,14 +7,24 @@ var PlayersCamera : Camera2D
 
 var IsAtDoor : bool = false
 
+signal Interact
+
 @onready var playerAnimations : AnimationPlayer = $AnimationPlayer
+@onready var player_sprite : Sprite2D = $Sprite2D
 
 func _ready() -> void:
+	super.get_sprite_from_body(player_sprite)
 	pass
 
 func _physics_process(delta : float) -> void:
 	handleCollission()
-	character_movement()
+	# character_movement()
+	
+	super.process_movement(current_speed)
+	pass
+
+func _process(delta : float) -> void:
+	character_tiled_movement()
 	pass
 
 func handleCollission() -> void:
@@ -26,7 +36,7 @@ func handleCollission() -> void:
 	pass
 
 func character_movement() -> void:
-	var current_speed : float = walk_speed
+	current_speed = walk_speed
 	if Input.is_action_pressed("run_button"):
 		current_speed = run_speed
 	
@@ -36,13 +46,33 @@ func character_movement() -> void:
 		"move_up",
 		"move_down"
 	)
+		
+	super.handle_animation(playerAnimations)
+	super.movement(Direction, current_speed)
+
+func character_tiled_movement() -> void:
+	current_speed = tile_based_walk_speed
+	if Input.is_action_pressed("run_button"):
+		current_speed = tile_based_run_speed
 	
-	velocity = current_speed * Direction
+	if Input.is_action_pressed("move_left"):
+		Direction = Vector2.LEFT
+	elif Input.is_action_pressed("move_right"):
+		Direction = Vector2.RIGHT
+	elif Input.is_action_pressed("move_up"):
+		Direction = Vector2.UP
+	elif Input.is_action_pressed("move_down"):
+		Direction = Vector2.DOWN
+	else:
+		Direction = Vector2.ZERO
 	
 	super.handle_animation(playerAnimations)
-	super.movement()
+	super.tile_based_movement(Direction, current_speed)
+	pass
 
-func interact_input() -> void:
+func interact_input() -> bool:
+	var result = false
 	if Input.is_action_just_pressed("accept_button"):
-		
+		result = true
 		pass
+	return result
