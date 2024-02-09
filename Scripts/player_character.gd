@@ -9,8 +9,11 @@ var IsAtDoor : bool = false
 
 signal Interact
 
+@export var character_name : String = "Yume"
+
 @onready var playerAnimations : AnimationPlayer = $AnimationPlayer
 @onready var player_sprite : Sprite2D = $Sprite2D
+@onready var player_hitbox : CollisionShape2D = $CollisionShape2D
 
 func _ready() -> void:
 	super.get_sprite_from_body(player_sprite)
@@ -18,13 +21,13 @@ func _ready() -> void:
 
 func _physics_process(delta : float) -> void:
 	handleCollission()
-	# character_movement()
-	
+	character_movement()
 	super.process_movement(current_speed)
 	pass
 
 func _process(delta : float) -> void:
-	character_tiled_movement()
+	# character_tiled_movement()
+	interact_input()
 	pass
 
 func handleCollission() -> void:
@@ -70,9 +73,7 @@ func character_tiled_movement() -> void:
 	super.tile_based_movement(Direction, current_speed)
 	pass
 
-func interact_input() -> bool:
-	var result = false
+func interact_input() -> void:
 	if Input.is_action_just_pressed("accept_button"):
-		result = true
-		pass
-	return result
+		Interact.emit(true)
+	pass

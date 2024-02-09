@@ -2,6 +2,8 @@ extends Node2D
 
 @export var EventTimer : Timer
 @export var WorldEvents : Array[WorldEvent]
+@export var Panoram : Image
+@export var WorldWrapsAround : bool = true
 
 var rng : RandomNumberGenerator
 
@@ -10,7 +12,7 @@ func _ready() -> void:
 
 func _process(delta : float) -> void:
 	await get_tree().process_frame
-	# SpawnWorldEvents()
+	SpawnWorldEvents()
 	pass
 
 func SpawnWorldEvents():

@@ -1,9 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://s1hc0l0p3hkr"]
+[gd_scene load_steps=5 format=3 uid="uid://s1hc0l0p3hkr"]
 
 [ext_resource type="PackedScene" uid="uid://cgcj1odton3th" path="res://Scenes/Heritables/world_canvas.tscn" id="1_6eg5h"]
 [ext_resource type="PackedScene" uid="uid://bq8r5i6iru2ey" path="res://Scenes/player_character.tscn" id="2_n4lwj"]
+[ext_resource type="PackedScene" uid="uid://gsmpwvq6jehn" path="res://Scenes/test_world_doorway.tscn" id="3_wwxcd"]
+[ext_resource type="Texture2D" uid="uid://bko5lo4u2hk3w" path="res://Sprites/Door.png" id="4_wmjnm"]
 
 [node name="World1" instance=ExtResource("1_6eg5h")]
 
 [node name="PlayerCharacter" parent="." index="1" instance=ExtResource("2_n4lwj")]
 position = Vector2(344, 202)
+
+[node name="TestWorldDoorway" parent="." index="2" instance=ExtResource("3_wwxcd")]
+position = Vector2(245, 163)
+texture = ExtResource("4_wmjnm")
+TargetWorld = "test_world"

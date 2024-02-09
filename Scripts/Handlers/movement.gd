@@ -7,7 +7,7 @@ class_name Movement
 @export var tile_based_walk_speed : float = 3
 @export var tile_based_run_speed : float = 3.5
 
-@onready var tile_map : TileMap = get_this_tree_child("TileMap") as TileMap
+# @onready var tile_map : TileMap = get_this_tree_child("TileMap") as TileMap
 
 var is_moving : bool = false
 var this_body_sprite : Sprite2D
@@ -43,27 +43,29 @@ func movement(char_direction : Vector2, speed : float) -> void:
 	move_and_slide()
 	pass
 
-# For tile based movement
+# For tile based movement : Currently unused
 func tile_based_movement(direction : Vector2i, delta_speed : float) -> void:
-	if !is_moving:
-		# Get current tile vector2i
-		var current_tile : Vector2i = tile_map.local_to_map(global_position)
-		
-		# Get target tile
-		var target_tile : Vector2i = Vector2i(
-			current_tile.x + direction.x,
-			current_tile.y + direction.y
-		)
-		
-		# Get custom data layer from tile
-		var tile_data : TileData = tile_map.get_cell_tile_data(0, target_tile)
-		
-		if tile_data.get_custom_data("walkable"):
-			# Move player
-			is_moving = true
-			global_position = tile_map.map_to_local(target_tile)
-			this_body_sprite.global_position = tile_map.map_to_local(current_tile)
-			pass
+	#if !is_moving:
+		## Get current tile vector2i
+		#var current_tile : Vector2i = tile_map.local_to_map(global_position)
+		#
+		## Get target tile
+		#var target_tile : Vector2i = Vector2i(
+			#current_tile.x + direction.x,
+			#current_tile.y + direction.y
+		#)
+		#
+		## Get custom data layer from tile
+		#var tile_data : TileData = tile_map.get_cell_tile_data(0, target_tile)
+		#var tile_data2 : TileData = tile_map.get_cell_tile_data(1, target_tile)
+		#
+		#if tile_data.get_custom_data("walkable"):
+			#if tile_data2 == null:
+				## Move player
+				#is_moving = true
+				#global_position = tile_map.map_to_local(target_tile)
+				#this_body_sprite.global_position = tile_map.map_to_local(current_tile)
+			#pass
 	pass
 
 func handle_animation(animationPlayer : AnimationPlayer) -> void:
