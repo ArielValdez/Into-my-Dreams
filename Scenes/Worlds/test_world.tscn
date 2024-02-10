@@ -73,3 +73,10 @@ position = Vector2(208, 128)
 position = Vector2(80, 96)
 texture = ExtResource("5_4jor6")
 TargetWorld = "test_world_2"
+ID = 1
+
+[node name="TestWorldDoorway2" parent="." index="4" instance=ExtResource("3_txrww")]
+position = Vector2(280, 128)
+texture = ExtResource("5_4jor6")
+TargetWorld = "world_1"
+ID = 3

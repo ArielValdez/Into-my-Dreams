@@ -4,7 +4,6 @@ class_name PlayerCharacter
 
 var Direction : Vector2
 var PlayersCamera : Camera2D
-
 var IsAtDoor : bool = false
 
 signal Interact
@@ -14,6 +13,10 @@ signal Interact
 @onready var playerAnimations : AnimationPlayer = $AnimationPlayer
 @onready var player_sprite : Sprite2D = $Sprite2D
 @onready var player_hitbox : CollisionShape2D = $CollisionShape2D
+
+func _init():
+	Manager.player_character = self
+	pass
 
 func _ready() -> void:
 	super.get_sprite_from_body(player_sprite)
@@ -27,7 +30,6 @@ func _physics_process(delta : float) -> void:
 
 func _process(delta : float) -> void:
 	# character_tiled_movement()
-	interact_input()
 	pass
 
 func handleCollission() -> void:
@@ -73,7 +75,5 @@ func character_tiled_movement() -> void:
 	super.tile_based_movement(Direction, current_speed)
 	pass
 
-func interact_input() -> void:
-	if Input.is_action_just_pressed("accept_button"):
-		Interact.emit(true)
-	pass
+func interact_input() -> bool:
+	return Input.is_action_just_pressed("accept_button")
