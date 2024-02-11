@@ -8,7 +8,7 @@ var IsAtDoor : bool = false
 
 signal Interact
 
-@export var character_name : String = "Yume"
+var character_name : String = "Yume"
 
 @onready var playerAnimations : AnimationPlayer = $AnimationPlayer
 @onready var player_sprite : Sprite2D = $Sprite2D

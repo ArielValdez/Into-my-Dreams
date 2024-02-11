@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://xliheoxoo6aa" path="res://Sprites/Character.png" id="2_vxs70"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fxmy7"]
-size = Vector2(30, 30)
+size = Vector2(31, 31)
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
 z_index = 1

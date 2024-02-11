@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfx73iw2e7g4x"]
+
+[ext_resource type="PackedScene" uid="uid://cgcj1odton3th" path="res://Scenes/Heritables/world_canvas.tscn" id="1_gg55n"]
+[ext_resource type="Texture2D" uid="uid://ctbplgbxytcc5" path="res://Panorams/Night_Sky.jpg" id="2_d0qjp"]
+
+[node name="TestWorld" instance=ExtResource("1_gg55n")]
+
+[node name="NightSky" type="Sprite2D" parent="." index="1"]
+position = Vector2(250, -28)
+texture = ExtResource("2_d0qjp")

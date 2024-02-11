@@ -20,6 +20,7 @@ func load_scene() -> void:
 
 func change_levels() -> void:
 	get_child(1).queue_free()
-	var nextLvl = new_scene.instance() #const lvlPath = preload("res://path of your level scene")
+	var nextLvl = new_scene.instance() 
+	#const lvlPath = preload("res://path of your level scene")
 	call_deferred("add_child", nextLvl)
 	pass

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cgcj1odton3th" path="res://Scenes/Heritables/world_canvas.tscn" id="1_0vkaw"]
 [ext_resource type="PackedScene" uid="uid://bq8r5i6iru2ey" path="res://Scenes/player_character.tscn" id="2_tea4m"]
-[ext_resource type="Texture2D" uid="uid://bdu3xhytou8if" path="res://Sprites/Simple_Tile_Map.png" id="2_vnm5i"]
+[ext_resource type="Texture2D" uid="uid://bdu3xhytou8if" path="res://Sprites/Tiles/Simple_Tile_Map.png" id="2_vnm5i"]
 [ext_resource type="PackedScene" uid="uid://gsmpwvq6jehn" path="res://Scenes/test_world_doorway.tscn" id="3_txrww"]
 [ext_resource type="Texture2D" uid="uid://bko5lo4u2hk3w" path="res://Sprites/Door.png" id="5_4jor6"]
 

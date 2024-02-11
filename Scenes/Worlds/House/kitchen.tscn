@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://jf315uhqrrqm"]
+
+[ext_resource type="PackedScene" uid="uid://cgcj1odton3th" path="res://Scenes/Heritables/world_canvas.tscn" id="1_g8wp4"]
+
+[node name="TestWorld" instance=ExtResource("1_g8wp4")]
