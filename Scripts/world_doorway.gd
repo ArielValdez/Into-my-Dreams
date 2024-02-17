@@ -35,11 +35,10 @@ func CrossDoorForNextWorld(pressedInteract : bool) -> void:
 		
 		get_tree().get_root().get_child(1).queue_free()
 		get_tree().get_root().add_child(world)
-		#call_deferred("add_child", world)
+		call_deferred("add_child", world)
 
 		spawn_player_at = next_door.position + Vector2(0, 32)
 		world.get_node("PlayerCharacter").position = spawn_player_at
-		#get_tree().change_scene_to_file("res://Scenes/Worlds/" + TargetWorld + ".tscn")
 	pass
 
 

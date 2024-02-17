@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4erb3wbnpfjh"]
+
+[ext_resource type="Texture2D" uid="uid://co1bnv867as5n" path="res://Sprites/GUI/Character_Panel.png" id="1_yytsb"]
+
+[node name="EffectsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="CharacterVisual" type="NinePatchRect" parent="."]
+layout_mode = 2
+offset_left = 896.0
+offset_right = 1152.0
+offset_bottom = 256.0
+texture = ExtResource("1_yytsb")
+region_rect = Rect2(0, 0, 128, 128)
+
+[node name="EffectsPannel" type="NinePatchRect" parent="."]
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 256.0
+texture = ExtResource("1_yytsb")
+region_rect = Rect2(0, 0, 128, 128)

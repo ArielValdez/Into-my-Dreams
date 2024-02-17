@@ -5,14 +5,16 @@ class_name PlayerCharacter
 var Direction : Vector2
 var PlayersCamera : Camera2D
 var IsAtDoor : bool = false
-
-signal Interact
-
+var IsSleeping : bool = false
+var CanMove : bool = true
 var character_name : String = "Yume"
+
+@export var current_effect : YumeEffects.Value = YumeEffects.Value.Regular
 
 @onready var playerAnimations : AnimationPlayer = $AnimationPlayer
 @onready var player_sprite : Sprite2D = $Sprite2D
 @onready var player_hitbox : CollisionShape2D = $CollisionShape2D
+@onready var timer_for_sleep : Timer = $TriggerTimer
 
 func _init():
 	Manager.player_character = self
@@ -32,28 +34,37 @@ func _process(delta : float) -> void:
 	# character_tiled_movement()
 	pass
 
+func _input(event : InputEvent) -> void:
+	if event.is_action_pressed("wake_up"):
+		Manager.sleep_or_wake_up_next_scene()
+		IsSleeping = false
+		pass
+	pass
+
 func handleCollission() -> void:
-	var collission : KinematicCollision2D
-	var collider : Object
-	for i in get_slide_collision_count():
-		collission = get_slide_collision(i)
-		collider = collission.get_collider()
+	if !CanMove:
+		var collission : KinematicCollision2D
+		var collider : Object
+		for i in get_slide_collision_count():
+			collission = get_slide_collision(i)
+			collider = collission.get_collider()
 	pass
 
 func character_movement() -> void:
-	current_speed = walk_speed
-	if Input.is_action_pressed("run_button"):
-		current_speed = run_speed
-	
-	Direction = Input.get_vector(
-		"move_left",
-		"move_right",
-		"move_up",
-		"move_down"
-	)
+	if CanMove:
+		current_speed = walk_speed
+		if Input.is_action_pressed("run_button"):
+			current_speed = run_speed
 		
-	super.handle_animation(playerAnimations)
-	super.movement(Direction, current_speed)
+		Direction = Input.get_vector(
+			"move_left",
+			"move_right",
+			"move_up",
+			"move_down"
+		)
+			
+		super.handle_animation(playerAnimations)
+		super.movement(Direction, current_speed)
 
 func character_tiled_movement() -> void:
 	current_speed = tile_based_walk_speed

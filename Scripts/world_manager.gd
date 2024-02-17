@@ -1,9 +1,11 @@
 extends Node2D
 
+signal invoke_event
+
 @export var EventTimer : Timer
 @export var WorldEvents : Array[WorldEvent]
 @export var Panoram : Image
-@export var WorldWrapsAround : bool = true
+@export var EventsAreByTimer : bool
 
 var rng : RandomNumberGenerator
 
@@ -12,10 +14,10 @@ func _ready() -> void:
 
 func _process(delta : float) -> void:
 	await get_tree().process_frame
-	SpawnWorldEvents()
+	SpawnWorldEventsByTimer()
 	pass
 
-func SpawnWorldEvents():
+func SpawnWorldEventsByTimer():
 	if WorldEvents:
 		for event in WorldEvents:
 			EventTimer.start(event.ThisEventTick)
@@ -28,3 +30,4 @@ func SpawnWorldEvents():
 				WorldEvents.erase(event)
 				pass
 	pass
+

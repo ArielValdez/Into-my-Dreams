@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://crtxwml5vk04u"]
+
+[ext_resource type="Script" path="res://Scripts/next_scene_area.gd" id="1_3mw3d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_td3mb"]
+size = Vector2(32, 32)
+
+[node name="NextSceneArea" type="Node2D"]
+script = ExtResource("1_3mw3d")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_td3mb")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

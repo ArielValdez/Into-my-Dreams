@@ -6,6 +6,7 @@
 [node name="TestWorldDoorway" instance=ExtResource("1_xuvmi")]
 
 [node name="Sprite2D" parent="." index="1"]
+position = Vector2(0, -32)
 texture = ExtResource("2_re8pw")
 
 [connection signal="body_entered" from="InteractionZone" to="." method="_on_interaction_zone_body_entered"]
