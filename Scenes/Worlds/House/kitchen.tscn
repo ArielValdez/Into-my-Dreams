@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://jf315uhqrrqm"]
 
 [ext_resource type="PackedScene" uid="uid://cgcj1odton3th" path="res://Scenes/Heritables/world_canvas.tscn" id="1_g8wp4"]
-[ext_resource type="TileSet" uid="uid://dvwlxcsxstffo" path="res://Sprites/Tiles/Tileset/simple_room.tres" id="2_6hw1m"]
+[ext_resource type="TileSet" uid="uid://dvwlxcsxstffo" path="res://TresObject/TileSet/simple_room.tres" id="2_6hw1m"]
 [ext_resource type="PackedScene" uid="uid://crtxwml5vk04u" path="res://Scenes/Heritables/next_scene_area.tscn" id="3_tkrc6"]
 
 [node name="Kitchen" instance=ExtResource("1_g8wp4")]
@@ -20,4 +20,4 @@ position = Vector2(148, 349)
 scale = Vector2(1.06669, 2.18605)
 next_scene_name = "House/room"
 scene_id = 1
-spawn_player_at = Vector2(750, 250)
+spawn_player_at = Vector2(740, 250)

@@ -21,3 +21,6 @@ position = Vector2(607, 150)
 texture = ExtResource("4_wmjnm")
 TargetWorld = "test_world_2"
 ID = 2
+
+[node name="CanvasLayer" parent="." index="4"]
+visible = false

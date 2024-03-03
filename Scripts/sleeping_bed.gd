@@ -21,7 +21,10 @@ func _input(event : InputEvent) -> void:
 				collision_bed.disabled = true
 				
 				Manager.player_character.CanMove = false
-				Manager.player_character.position = self.position
+				Manager.player_character.position = self.position + Vector2(0, 24)
+				Manager.player_character.playerAnimations.play("walk_left")
+				Manager.player_character.playerAnimations.stop()
+				
 				player_on_bed = !player_on_bed
 				
 				Manager.player_character.timer_for_sleep.start(time_sleep)
@@ -30,7 +33,7 @@ func _input(event : InputEvent) -> void:
 				Manager.player_character.IsSleeping = true
 				
 				pass
-			else :
+			else:
 				collision_bed.disabled = false
 				
 				Manager.player_character.CanMove = true

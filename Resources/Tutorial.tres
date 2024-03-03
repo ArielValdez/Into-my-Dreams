@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ActiveEffect" load_steps=2 format=3 uid="uid://bgxui0prj0jfw"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/active_effect.gd" id="1_mwn87"]
+
+[resource]
+script = ExtResource("1_mwn87")
+effect = 0
+is_active = true
+can_use_outside_dream = true

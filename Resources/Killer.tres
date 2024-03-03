@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ActiveEffect" load_steps=2 format=3 uid="uid://b20tepn6bc0jt"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/active_effect.gd" id="1_cn5hi"]
+
+[resource]
+script = ExtResource("1_cn5hi")
+effect = 3
+is_active = true

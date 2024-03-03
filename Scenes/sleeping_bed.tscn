@@ -7,7 +7,7 @@
 size = Vector2(32, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f51hu"]
-size = Vector2(20, 30.8811)
+size = Vector2(20, 60.7447)
 
 [node name="SleepingBed" type="Node2D"]
 position = Vector2(0, -16)
@@ -27,7 +27,7 @@ shape = SubResource("RectangleShape2D_p2887")
 [node name="InteractionZone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone"]
-position = Vector2(0, -1)
+position = Vector2(0, 9.53674e-07)
 scale = Vector2(2.15303, 1.05359)
 shape = SubResource("RectangleShape2D_f51hu")
 

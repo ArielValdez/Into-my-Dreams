@@ -3,6 +3,7 @@ extends Node
 class_name YumeEffects
 
 enum Value {
+	Tutorial,
 	Regular,
 	Dream, # regular form inside dream
 	Killer, # should be able to kill things

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-class_name Movement
+class_name Movements
 
 @export var walk_speed : float = 250
 @export var run_speed : float = 350
@@ -68,7 +68,7 @@ func tile_based_movement(direction : Vector2i, delta_speed : float) -> void:
 			#pass
 	pass
 
-func handle_animation(animationPlayer : AnimationPlayer) -> void:
+func handle_animation(animationPlayer : AnimationPlayer, animation : String) -> void:
 	if animationPlayer:
 		if velocity.length() == 0:
 			if animationPlayer.is_playing():
@@ -82,6 +82,6 @@ func handle_animation(animationPlayer : AnimationPlayer) -> void:
 			elif velocity.y < 0:
 				direction = "up"
 			
-			if animationPlayer.has_animation("walk_" + direction):
-				animationPlayer.play("walk_" + direction)
+			if animationPlayer.has_animation(animation + direction):
+				animationPlayer.play(animation + direction)
 	pass

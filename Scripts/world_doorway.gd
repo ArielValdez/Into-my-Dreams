@@ -33,7 +33,7 @@ func CrossDoorForNextWorld(pressedInteract : bool) -> void:
 					next_door = item
 					break
 		
-		get_tree().get_root().get_child(1).queue_free()
+		get_tree().get_root().get_child(2).queue_free()
 		get_tree().get_root().add_child(world)
 		call_deferred("add_child", world)
 

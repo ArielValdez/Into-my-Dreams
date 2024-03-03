@@ -1,4 +1,4 @@
-extends Movement
+extends Movements
 
 class_name PlayerCharacter
 
@@ -8,20 +8,27 @@ var IsAtDoor : bool = false
 var IsSleeping : bool = false
 var CanMove : bool = true
 var character_name : String = "Yume"
+var anim_name : String = ""
 
 @export var current_effect : YumeEffects.Value = YumeEffects.Value.Regular
 
 @onready var playerAnimations : AnimationPlayer = $AnimationPlayer
-@onready var player_sprite : Sprite2D = $Sprite2D
+@onready var sprite : Sprite2D = $Sprite2D
 @onready var player_hitbox : CollisionShape2D = $CollisionShape2D
 @onready var timer_for_sleep : Timer = $TriggerTimer
 
+var start_walk_speed : float
+var start_run_speed : float
+
 func _init():
+	# should be called just once
 	Manager.player_character = self
 	pass
 
 func _ready() -> void:
-	super.get_sprite_from_body(player_sprite)
+	start_walk_speed = walk_speed
+	start_run_speed = run_speed
+	super.get_sprite_from_body(sprite)
 	pass
 
 func _physics_process(delta : float) -> void:
@@ -30,15 +37,12 @@ func _physics_process(delta : float) -> void:
 	super.process_movement(current_speed)
 	pass
 
-func _process(delta : float) -> void:
-	# character_tiled_movement()
-	pass
-
 func _input(event : InputEvent) -> void:
-	if event.is_action_pressed("wake_up"):
-		Manager.sleep_or_wake_up_next_scene()
-		IsSleeping = false
-		pass
+	if IsSleeping:
+		if event.is_action_pressed("wake_up"):
+			Manager.sleep_or_wake_up_next_scene()
+			IsSleeping = false
+			pass
 	pass
 
 func handleCollission() -> void:
@@ -52,9 +56,14 @@ func handleCollission() -> void:
 
 func character_movement() -> void:
 	if CanMove:
+		var animation : String = "walk_"
 		current_speed = walk_speed
+		
 		if Input.is_action_pressed("run_button"):
+			animation = "walk_"
 			current_speed = run_speed
+		
+		animation += anim_name
 		
 		Direction = Input.get_vector(
 			"move_left",
@@ -63,7 +72,7 @@ func character_movement() -> void:
 			"move_down"
 		)
 			
-		super.handle_animation(playerAnimations)
+		super.handle_animation(playerAnimations, animation)
 		super.movement(Direction, current_speed)
 
 func character_tiled_movement() -> void:
@@ -82,7 +91,7 @@ func character_tiled_movement() -> void:
 	else:
 		Direction = Vector2.ZERO
 	
-	super.handle_animation(playerAnimations)
+	super.handle_animation(playerAnimations, "walk_")
 	super.tile_based_movement(Direction, current_speed)
 	pass
 

@@ -33,10 +33,7 @@ position = Vector2(479, 486)
 scale = Vector2(2.47345, 0.961309)
 next_scene_name = "House/balcony"
 scene_id = 2
-spawn_player_at = Vector2(220, 260)
+spawn_player_at = Vector2(220, 220)
 
 [node name="PlayerCharacter" parent="." index="4" instance=ExtResource("3_sd4o6")]
 position = Vector2(432, 256)
-
-[node name="CanvasLayer" parent="." index="5"]
-visible = false
