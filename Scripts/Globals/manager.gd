@@ -56,33 +56,37 @@ func change_levels() -> void:
 	call_deferred("add_child", nextLvl)
 	pass
 
-func character_effect(effect: YumeEffects.Value):
-	player_character.anim_name = YumeEffects.Value.keys()[effect]
-	
-	match effect:
-		YumeEffects.Value.Tutorial:
-			print_debug("Tutorial button was pressed")
-			# abrir menu de tutorial
-			pass
-		YumeEffects.Value.Regular:
-			print_debug("Regular button was pressed")
-			Manager.player_character.anim_name = ""
-			pass
-		YumeEffects.Value.Dream:
-			print_debug("Dream button was pressed")
-			pass
-		_: # effect does not exist
-			print_debug("you should not be here...")
-			player_character.sprite.texture = SpriteManager.sprite
-			player_character.walk_speed = player_character.start_walk_speed
-			player_character.run_speed = player_character.start_run_speed
-	
-	# turning everything to where it was
-	pause_menu.is_paused = false
-	pause_menu.visible = false
-	
-	effect_menu.visible = false
-	effect_menu.on_effects_menu = false
-	
-	get_tree().paused = false
+func character_effect(effect: ActiveEffect):
+	if player_character.IsSleeping:
+		player_character.anim_name = YumeEffects.Value.keys()[effect.effect]
+		
+		match effect.effect:
+			YumeEffects.Value.Tutorial:
+				print_debug("Tutorial button was pressed")
+				# abrir menu de tutorial
+				pass
+			YumeEffects.Value.Regular:
+				print_debug("Regular button was pressed")
+				Manager.player_character.anim_name = ""
+				pass
+			YumeEffects.Value.Dream:
+				print_debug("Dream button was pressed")
+				pass
+			_: # effect does not exist
+				print_debug("you should not be here...")
+				player_character.sprite.texture = SpriteManager.sprite
+				player_character.walk_speed = player_character.start_walk_speed
+				player_character.run_speed = player_character.start_run_speed
+		
+		# turning everything to where it was
+		pause_menu.is_paused = false
+		pause_menu.visible = false
+		
+		effect_menu.visible = false
+		effect_menu.on_effects_menu = false
+		
+		get_tree().paused = false
+	else:
+		print_debug("Muri")
+		pass
 	pass

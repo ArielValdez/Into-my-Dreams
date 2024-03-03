@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_cn5hi")
 effect = 3
-is_active = true
+is_active = false
+can_use_outside_dream = false

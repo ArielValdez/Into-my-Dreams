@@ -37,6 +37,3 @@ spawn_player_at = Vector2(220, 260)
 
 [node name="PlayerCharacter" parent="." index="4" instance=ExtResource("3_sd4o6")]
 position = Vector2(432, 256)
-
-[node name="CanvasLayer" parent="." index="5"]
-visible = false

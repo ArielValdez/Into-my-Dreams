@@ -1,9 +1,9 @@
 extends Control
 
-@onready var button : Button = $EffectsPannel/CenterContainer/GridContainer.get_child(0)
+var button : Button
 var on_effects_menu : bool = false
 
-func _ready() -> void:
+func _init() -> void:
 	visible = false
 	Manager.effect_menu = self
 	pass

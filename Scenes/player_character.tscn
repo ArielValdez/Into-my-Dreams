@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/player_character.gd" id="1_xuvvn"]
 [ext_resource type="Texture2D" uid="uid://xliheoxoo6aa" path="res://Sprites/Character.png" id="2_vxs70"]
+[ext_resource type="PackedScene" uid="uid://bguqs7b7vb882" path="res://Scenes/Component/collision.tscn" id="3_uh1we"]
 
 [sub_resource type="Animation" id="Animation_papv1"]
 length = 0.001
@@ -95,9 +96,6 @@ _data = {
 "walk_up": SubResource("Animation_dngvt")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fxmy7"]
-size = Vector2(30, 30)
-
 [node name="PlayerCharacter" type="CharacterBody2D"]
 z_index = 1
 script = ExtResource("1_xuvvn")
@@ -118,6 +116,4 @@ libraries = {
 "": SubResource("AnimationLibrary_exbt6")
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -15)
-shape = SubResource("RectangleShape2D_fxmy7")
+[node name="CollisionShape2D" parent="." instance=ExtResource("3_uh1we")]

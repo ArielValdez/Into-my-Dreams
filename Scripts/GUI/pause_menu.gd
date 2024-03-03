@@ -3,7 +3,7 @@ extends Control
 var is_paused : bool = false
 @onready var button : Button = $MarginContainer/VBoxContainer/Effects
 
-func _ready() -> void:
+func _init() -> void:
 	visible = false
 	Manager.pause_menu = self
 	pass
