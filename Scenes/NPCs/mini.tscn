@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyvym3o45eo6"]
+
+[ext_resource type="PackedScene" uid="uid://q4v6wgblr381" path="res://Scenes/Heritables/ncp_character.tscn" id="1_g5vqo"]
+[ext_resource type="Texture2D" uid="uid://bkfm5vf6bvptu" path="res://Sprites/Characters/Sprite_Npc.png" id="2_60r4w"]
+
+[node name="Mini" instance=ExtResource("1_g5vqo")]
+
+[node name="Sprite2D" parent="." index="2"]
+position = Vector2(0, -16)
+texture = ExtResource("2_60r4w")
+
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -15,7 +15,7 @@ layer_0/tile_data = PackedInt32Array(-65538, 65536, 1, -2, 65536, 1, 65534, 6553
 layer_1/name = "Doors"
 layer_1/tile_data = PackedInt32Array()
 
-[node name="NextSceneArea" parent="." index="2" instance=ExtResource("3_tkrc6")]
+[node name="room" parent="." index="2" instance=ExtResource("3_tkrc6")]
 position = Vector2(148, 349)
 scale = Vector2(1.06669, 2.18605)
 next_scene_name = "House/room"

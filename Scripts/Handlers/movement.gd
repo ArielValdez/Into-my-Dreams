@@ -68,10 +68,10 @@ func tile_based_movement(direction : Vector2i, delta_speed : float) -> void:
 			#pass
 	pass
 
-func handle_animation(animationPlayer : AnimationPlayer, animation : String) -> void:
+func handle_animation(animationPlayer : AnimationPlayer, animation : String, should_stop : bool = true) -> void:
 	if animationPlayer:
 		if velocity.length() == 0:
-			if animationPlayer.is_playing():
+			if animationPlayer.is_playing() and should_stop:
 				animationPlayer.stop()
 		else:
 			var direction = "down"

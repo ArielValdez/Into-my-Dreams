@@ -3,10 +3,13 @@ extends Movements
 class_name PlayerCharacter
 
 var Direction : Vector2
-var PlayersCamera : Camera2D
+
+@onready var player_camera : Camera2D = $Camera2D
+
 var IsAtDoor : bool = false
 var IsSleeping : bool = false
 var CanMove : bool = true
+
 var character_name : String = "Yume"
 var anim_name : String = ""
 
@@ -16,9 +19,12 @@ var anim_name : String = ""
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var player_hitbox : CollisionShape2D = $CollisionShape2D
 @onready var timer_for_sleep : Timer = $TriggerTimer
+@onready var camera : Camera2D = $Camera2D
 
 var start_walk_speed : float
 var start_run_speed : float
+
+signal interaction_signal
 
 func _init():
 	# should be called just once
@@ -34,7 +40,6 @@ func _ready() -> void:
 func _physics_process(delta : float) -> void:
 	handleCollission()
 	character_movement()
-	super.process_movement(current_speed)
 	pass
 
 func _input(event : InputEvent) -> void:
@@ -42,6 +47,20 @@ func _input(event : InputEvent) -> void:
 		if event.is_action_pressed("wake_up"):
 			Manager.sleep_or_wake_up_next_scene()
 			IsSleeping = false
+			pass
+	
+	if not IsSleeping:
+		if Input.is_action_just_pressed("accept_button"):
+			pass
+	
+	Manager.open_door.emit(Input.is_action_just_pressed("accept_button"))
+	pass
+
+func collect_effect(in_range : bool, effect_to_collect : ActiveEffect, ncp : CharacterBody2D) -> void:
+	if Input.is_action_just_pressed("accept_button"):
+		if in_range and effect_to_collect and not effect_to_collect.is_active:
+			Manager.effect_collected.emit(effect_to_collect, true)
+			print_debug("effect has been collected")
 			pass
 	pass
 
@@ -94,6 +113,3 @@ func character_tiled_movement() -> void:
 	super.handle_animation(playerAnimations, "walk_")
 	super.tile_based_movement(Direction, current_speed)
 	pass
-
-func interact_input() -> bool:
-	return Input.is_action_just_pressed("accept_button")

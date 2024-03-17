@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 Manager="*res://Scripts/Globals/manager.gd"
 SpriteManager="*res://Scripts/Globals/sprite_manager.gd"
+TransitionScene="*res://Scenes/GUI/transition_scene.tscn"
+MenusManager="*res://Scenes/Globals/Menus.tscn"
 
 [display]
 

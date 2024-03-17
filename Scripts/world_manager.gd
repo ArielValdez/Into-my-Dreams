@@ -1,23 +1,47 @@
 extends Node2D
 
+class_name WorldScene
+
 signal invoke_event
 
-@export var EventTimer : Timer
+@onready var tilemap : TileMap = get_node("TileMap")
+@onready var EventTimer : Timer = $WorldEventTimer
+
 @export var WorldEvents : Array[WorldEvent]
 @export var Panoram : Image
 @export var EventsAreByTimer : bool
+@export var rid_rain_effect : bool = true
+@export var enabled_camera_for_scene : bool = false
+@export var camera_limit_off_set : Vector2
+@export var camera_zero_off_set_limit : Vector2
+@export var world_music : AudioStream
+@export var rain_effect : PackedScene
 
 var rng : RandomNumberGenerator
 
 func _ready() -> void:
+	Manager.resize_camera_limit.emit(self)
+	Manager.pause_menu.on_main_menu = false
+	
+	if rain_effect != null:
+		if Manager.player_character.camera.get_child_count() > 0:
+			Manager.player_character.camera.remove_children()
+		
+		var particles_on_screen : GPUParticles2D = rain_effect.instantiate()
+		Manager.player_character.camera.add_child(particles_on_screen)
+		pass
+	elif rid_rain_effect:
+		if Manager.player_character.camera.get_child_count() > 0:
+			Manager.player_character.camera.remove_children()
+	# send level music
 	pass
 
 func _process(delta : float) -> void:
 	await get_tree().process_frame
-	SpawnWorldEventsByTimer()
+	spawn_world_events_by_timer()
 	pass
 
-func SpawnWorldEventsByTimer():
+func spawn_world_events_by_timer():
 	if WorldEvents:
 		for event in WorldEvents:
 			EventTimer.start(event.ThisEventTick)
@@ -25,7 +49,7 @@ func SpawnWorldEventsByTimer():
 			await EventTimer.timeout
 			if (rng.Randf() < event.Chance):
 				# spawn event into scene
-				
+				add_child(event)
 				
 				WorldEvents.erase(event)
 				pass

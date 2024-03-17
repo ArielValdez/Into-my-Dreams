@@ -3,7 +3,6 @@ extends Node2D
 class_name Door
 
 @onready var sprite : Sprite2D = $Sprite2D
-#@onready var player_character : CharacterBody2D = $"../PlayerCharacter"
 
 @export var texture : Texture2D
 @export var TargetWorld : String
@@ -14,15 +13,10 @@ var spawn_player_at : Vector2
 
 func _ready() -> void:
 	sprite.texture = texture
+	Manager.open_door.connect(cross_door_for_next_world)
 	pass
 
-func _process(delta):
-	CrossDoorForNextWorld(Manager.player_character.interact_input())
-	pass
-
-func CrossDoorForNextWorld(pressedInteract : bool) -> void:
-	# play animation for enter door
-	
+func cross_door_for_next_world(pressedInteract : bool) -> void:
 	if pressedInteract and Manager.player_character.IsAtDoor:
 		var world : Node = Manager.new_scene.instantiate()
 		
@@ -33,12 +27,17 @@ func CrossDoorForNextWorld(pressedInteract : bool) -> void:
 					next_door = item
 					break
 		
-		get_tree().get_root().get_child(2).queue_free()
+		TransitionScene.transition()
+		await TransitionScene.on_transition_finished
+		
+		get_tree().get_root().get_child(4).remove_child(Manager.player_character)
+		world.add_child(Manager.player_character)
+		get_tree().get_root().get_child(4).queue_free()
 		get_tree().get_root().add_child(world)
-		call_deferred("add_child", world)
-
+		
 		spawn_player_at = next_door.position + Vector2(0, 32)
-		world.get_node("PlayerCharacter").position = spawn_player_at
+		Manager.player_character.position = spawn_player_at
+		
 	pass
 
 
@@ -46,9 +45,10 @@ func _on_interaction_zone_body_entered(body : Node2D):
 	if body.name == "PlayerCharacter":
 		Manager.target_world = TargetWorld
 		Manager.target_world_door_id = ID
-		Manager.load_scene()
 		Manager.player_character.IsAtDoor = true
-		pass
+		Manager.load_scene()
+		
+		print_debug(Manager.target_world)
 	pass
 
 

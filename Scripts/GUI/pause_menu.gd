@@ -1,6 +1,7 @@
 extends Control
 
 var is_paused : bool = false
+var on_main_menu : bool = true
 @onready var button : Button = $MarginContainer/VBoxContainer/Effects
 
 func _init() -> void:
@@ -13,15 +14,16 @@ func _process(delta : float) -> void:
 		input_pause_menu()
 
 func pause():
-	visible = true
-	is_paused = true
-	get_tree().paused = true
-	
-	if button.has_method("grab_focus"):
-		button.grab_focus()
-	else:
-		print_debug("button needs gran_focus function")
-	pass
+	if !on_main_menu:
+		visible = true
+		is_paused = true
+		get_tree().paused = true
+		
+		if button.has_method("grab_focus"):
+			button.grab_focus()
+		else:
+			print_debug("button needs gran_focus function")
+		pass
 
 func resume():
 	visible = false

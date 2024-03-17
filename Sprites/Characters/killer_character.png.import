@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xliheoxoo6aa"
-path="res://.godot/imported/Character.png-18ed598cc7c72eda505e714c19da321a.ctex"
+uid="uid://cydpryritqthx"
+path="res://.godot/imported/killer_character.png-1332ae3fb7c3340b7fe61b515254344d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Character.png"
-dest_files=["res://.godot/imported/Character.png-18ed598cc7c72eda505e714c19da321a.ctex"]
+source_file="res://Sprites/Characters/killer_character.png"
+dest_files=["res://.godot/imported/killer_character.png-1332ae3fb7c3340b7fe61b515254344d.ctex"]
 
 [params]
 

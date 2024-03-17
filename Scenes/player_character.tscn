@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bq8r5i6iru2ey"]
+[gd_scene load_steps=11 format=3 uid="uid://bq8r5i6iru2ey"]
 
 [ext_resource type="Script" path="res://Scripts/player_character.gd" id="1_xuvvn"]
-[ext_resource type="Texture2D" uid="uid://xliheoxoo6aa" path="res://Sprites/Character.png" id="2_vxs70"]
+[ext_resource type="Texture2D" uid="uid://xliheoxoo6aa" path="res://Sprites/Characters/Character.png" id="2_704mm"]
 [ext_resource type="PackedScene" uid="uid://bguqs7b7vb882" path="res://Scenes/Component/collision.tscn" id="3_uh1we"]
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="4_yljq2"]
 
 [sub_resource type="Animation" id="Animation_papv1"]
 length = 0.001
@@ -107,7 +108,7 @@ tile_based_run_speed = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -30)
-texture = ExtResource("2_vxs70")
+texture = ExtResource("2_704mm")
 hframes = 3
 vframes = 4
 
@@ -117,3 +118,8 @@ libraries = {
 }
 
 [node name="CollisionShape2D" parent="." instance=ExtResource("3_uh1we")]
+position = Vector2(0, -13)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.2, 1.2)
+script = ExtResource("4_yljq2")

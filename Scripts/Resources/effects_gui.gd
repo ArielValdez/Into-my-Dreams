@@ -4,9 +4,12 @@ extends GridContainer
 @export var button_size : Vector2
 var container : GridContainer = self
 
+var player_character : CharacterBody2D
+
 func _ready():
 	# get the number of effects that exists then change the count of the array to it
 	# all effects except tutorial should be put as inactive
+	Manager.connect("effect_collected", obtain_new_effect)
 	load_active_effects()
 	pass
 
