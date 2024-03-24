@@ -22,17 +22,8 @@ var rng : RandomNumberGenerator
 func _ready() -> void:
 	Manager.resize_camera_limit.emit(self)
 	Manager.pause_menu.on_main_menu = false
+
 	
-	if rain_effect != null:
-		if Manager.player_character.camera.get_child_count() > 0:
-			Manager.player_character.camera.remove_children()
-		
-		var particles_on_screen : GPUParticles2D = rain_effect.instantiate()
-		Manager.player_character.camera.add_child(particles_on_screen)
-		pass
-	elif rid_rain_effect:
-		if Manager.player_character.camera.get_child_count() > 0:
-			Manager.player_character.camera.remove_children()
 	# send level music
 	pass
 

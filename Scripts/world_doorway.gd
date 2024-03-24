@@ -13,7 +13,11 @@ var spawn_player_at : Vector2
 
 func _ready() -> void:
 	sprite.texture = texture
-	Manager.open_door.connect(cross_door_for_next_world)
+	Manager.open_door.connect(_cross_door)
+	pass
+
+func _cross_door(pressed_interact : bool) -> void:
+	call_deferred("cross_door_for_next_world", pressed_interact)
 	pass
 
 func cross_door_for_next_world(pressedInteract : bool) -> void:
@@ -32,8 +36,8 @@ func cross_door_for_next_world(pressedInteract : bool) -> void:
 		
 		get_tree().get_root().get_child(4).remove_child(Manager.player_character)
 		world.add_child(Manager.player_character)
-		get_tree().get_root().get_child(4).queue_free()
 		get_tree().get_root().add_child(world)
+		get_tree().get_root().get_child(4).free()
 		
 		spawn_player_at = next_door.position + Vector2(0, 32)
 		Manager.player_character.position = spawn_player_at

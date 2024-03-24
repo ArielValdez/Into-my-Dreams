@@ -5,8 +5,6 @@ extends Node2D
 @export var spawn_player_at : Vector2
 var is_passing_through : bool = false
 
-signal go_to_next_scene
-
 func _ready() -> void:
 	#go_to_next_scene.emit("on_level_change", self, GetToNextScene)
 	if !Manager.go_to_next_scene.is_connected(get_to_next_scene):
