@@ -7,6 +7,9 @@ var in_range : bool = false
 
 func _ready() -> void:
 	Manager.connect("collected_effect_from_npc", send_effect)
+	print_debug("")
+	print_debug(YumeEffects.Value.keys()[held_effect.effect])
+	print_debug("")
 	pass
 
 func _input(event):

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkfm5vf6bvptu"
-path="res://.godot/imported/Sprite_Npc.png-2bee11133e18ed8d74ad5bcee9547048.ctex"
+uid="uid://xliheoxoo6aa"
+path="res://.godot/imported/TempCharacter.png-db70a93a1362fa2201fd5bad0143a4aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Characters/Sprite_Npc.png"
-dest_files=["res://.godot/imported/Sprite_Npc.png-2bee11133e18ed8d74ad5bcee9547048.ctex"]
+source_file="res://Sprites/Characters/TempCharacter.png"
+dest_files=["res://.godot/imported/TempCharacter.png-db70a93a1362fa2201fd5bad0143a4aa.ctex"]
 
 [params]
 

@@ -12,6 +12,7 @@ z_index = 1
 script = ExtResource("1_3fr2v")
 
 [node name="CollisionShape2D" parent="." instance=ExtResource("1_ygkik")]
+z_index = 1
 shape = null
 
 [node name="Area2D" type="Area2D" parent="."]

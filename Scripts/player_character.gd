@@ -13,7 +13,7 @@ var CanMove : bool = true
 var character_name : String = "Yume"
 var anim_name : String = ""
 
-@export var current_effect : YumeEffects.Value = YumeEffects.Value.Regular
+@export var current_effect : YumeEffects.Value = YumeEffects.Value.Base
 
 @onready var playerAnimations : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D
@@ -60,7 +60,6 @@ func collect_effect(in_range : bool, effect_to_collect : ActiveEffect, ncp : Cha
 	if Input.is_action_just_pressed("accept_button"):
 		if in_range and effect_to_collect and not effect_to_collect.is_active:
 			Manager.effect_collected.emit(effect_to_collect, true)
-			print_debug("effect has been collected")
 			pass
 	pass
 

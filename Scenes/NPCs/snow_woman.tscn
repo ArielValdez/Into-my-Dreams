@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://y88po7mmxjkg"]
+[gd_scene load_steps=12 format=3 uid="uid://y88po7mmxjkg"]
 
 [ext_resource type="PackedScene" uid="uid://q4v6wgblr381" path="res://Scenes/Heritables/ncp_character.tscn" id="1_nqoef"]
-[ext_resource type="Texture2D" uid="uid://cse70u0yuvklt" path="res://Sprites/Characters/YukiOnna.png" id="2_hxa1x"]
+[ext_resource type="Resource" uid="uid://xr2ro2g36km2" path="res://Resources/YukiOnna.tres" id="2_dx5pn"]
+[ext_resource type="Texture2D" uid="uid://cse70u0yuvklt" path="res://Sprites/Characters/NCP/YukiOnna.png" id="2_hxa1x"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/idle_snowwoman.gd" id="3_jna8r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gjmq3"]
@@ -100,6 +101,7 @@ _data = {
 }
 
 [node name="SnowWoman" instance=ExtResource("1_nqoef")]
+held_effect = ExtResource("2_dx5pn")
 walk_speed = 100.0
 run_speed = 100.0
 

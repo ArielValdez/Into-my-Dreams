@@ -58,7 +58,7 @@ func sleep_or_wake_up_next_scene() -> void:
 	get_tree().get_root().get_child(4).free()
 	world.add_child(player_character)
 	
-	transform_player(YumeEffects.Value.Regular, SpriteManager.default_player_sprite, "", player_character.start_walk_speed, player_character.start_run_speed)
+	transform_player(YumeEffects.Value.Base, SpriteManager.default_player_sprite, "", player_character.start_walk_speed, player_character.start_run_speed)
 	player_character.position = transfer_position
 	player_character.CanMove = true
 
@@ -70,6 +70,10 @@ func character_effect(effect: ActiveEffect):
 			YumeEffects.Value.Tutorial:
 				print_debug("Tutorial button was pressed")
 				# abrir menu de tutorial
+				pass
+			YumeEffects.Value.SnowWoman:
+				transform_player(effect.effect, SpriteManager.snow_woman_sprite, "", player_character.start_walk_speed, player_character.start_run_speed)
+				print_debug("Snowwoman transoformation")
 				pass
 			YumeEffects.Value.Killer:
 				print_debug("Killer button was pressed")
@@ -96,7 +100,7 @@ func character_effect(effect: ActiveEffect):
 func transform_player(effect : YumeEffects.Value, sprite_transformation : Texture2D, anim_name : String, walk_speed_change : float, run_speed_change : float):
 	if player_character.current_effect == effect:
 		player_character.anim_name = ""
-		player_character.current_effect = YumeEffects.Value.Regular
+		player_character.current_effect = YumeEffects.Value.Base
 		player_character.sprite.texture = SpriteManager.default_player_sprite
 		player_character.walk_speed = player_character.start_walk_speed
 		player_character.run_speed = player_character.start_run_speed

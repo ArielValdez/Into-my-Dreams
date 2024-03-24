@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cydpryritqthx"
-path="res://.godot/imported/killer_character.png-1332ae3fb7c3340b7fe61b515254344d.ctex"
+path="res://.godot/imported/killer_character.png-a567dd390f9922d76f022caf7d59b4c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Characters/killer_character.png"
-dest_files=["res://.godot/imported/killer_character.png-1332ae3fb7c3340b7fe61b515254344d.ctex"]
+source_file="res://Sprites/Characters/PC/killer_character.png"
+dest_files=["res://.godot/imported/killer_character.png-a567dd390f9922d76f022caf7d59b4c4.ctex"]
 
 [params]
 

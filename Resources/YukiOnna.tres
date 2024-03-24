@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ActiveEffect" load_steps=2 format=3 uid="uid://xr2ro2g36km2"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/active_effect.gd" id="1_e1g1d"]
+
+[resource]
+script = ExtResource("1_e1g1d")
+effect = 3
+is_active = false
+can_use_outside_dream = false
+description_of_effect = "Transform into a Snow woman"

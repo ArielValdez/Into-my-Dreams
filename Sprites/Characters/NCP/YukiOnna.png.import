@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xliheoxoo6aa"
-path="res://.godot/imported/Character.png-c332c09cbac275b99b69cfc4a2bfd663.ctex"
+uid="uid://cse70u0yuvklt"
+path="res://.godot/imported/YukiOnna.png-ee6506ecc033e340cf1cc858d7c68953.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Characters/Character.png"
-dest_files=["res://.godot/imported/Character.png-c332c09cbac275b99b69cfc4a2bfd663.ctex"]
+source_file="res://Sprites/Characters/NCP/YukiOnna.png"
+dest_files=["res://.godot/imported/YukiOnna.png-ee6506ecc033e340cf1cc858d7c68953.ctex"]
 
 [params]
 
