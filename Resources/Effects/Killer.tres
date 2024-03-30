@@ -4,6 +4,9 @@
 
 [resource]
 script = ExtResource("1_cn5hi")
-effect = 3
+ID = 2
+effect = 4
 is_active = false
+has_been_activated = false
 can_use_outside_dream = false
+description_of_effect = ""

@@ -9,6 +9,7 @@ radius = 38.2099
 
 [node name="NCPCharacter" type="CharacterBody2D"]
 z_index = 1
+motion_mode = 1
 script = ExtResource("1_3fr2v")
 
 [node name="CollisionShape2D" parent="." instance=ExtResource("1_ygkik")]

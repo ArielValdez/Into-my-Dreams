@@ -10,7 +10,8 @@ signal invoke_event
 @export var WorldEvents : Array[WorldEvent]
 @export var Panoram : Image
 @export var EventsAreByTimer : bool
-@export var rid_rain_effect : bool = true
+@export var is_looping_world : bool = false
+@export var get_rid_rain_effect : bool = true
 @export var enabled_camera_for_scene : bool = false
 @export var camera_limit_off_set : Vector2
 @export var camera_zero_off_set_limit : Vector2

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://8g7dy18uf4a"]
+
+[ext_resource type="Script" path="res://Scripts/StateMachine/idle_snowwoman.gd" id="1_m7a00"]
+
+[node name="IdleSnowWoman" type="Node" node_paths=PackedStringArray("enemy")]
+script = ExtResource("1_m7a00")
+enemy = NodePath("")

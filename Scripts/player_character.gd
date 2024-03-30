@@ -4,25 +4,28 @@ class_name PlayerCharacter
 
 var Direction : Vector2
 
-@onready var player_camera : Camera2D = $Camera2D
 
 var IsAtDoor : bool = false
-var IsSleeping : bool = false
+var IsSleeping : bool = true
 var CanMove : bool = true
+var has_light : bool = false
 
 var character_name : String = "Yume"
 var anim_name : String = ""
 
 @export var current_effect : YumeEffects.Value = YumeEffects.Value.Base
 
+@onready var player_camera : Camera2D = $Camera2D
 @onready var playerAnimations : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var player_hitbox : CollisionShape2D = $CollisionShape2D
 @onready var timer_for_sleep : Timer = $TriggerTimer
 @onready var camera : Camera2D = $Camera2D
+@onready var light_source : Node2D = preload("res://Scenes/Effects/demon_fire_ball.tscn").instantiate()
 
 var start_walk_speed : float
 var start_run_speed : float
+
 
 signal interaction_signal
 
@@ -53,13 +56,19 @@ func _input(event : InputEvent) -> void:
 		if Input.is_action_just_pressed("accept_button"):
 			pass
 	
+	if Input.is_action_just_pressed("effect_action"):
+		effect_powers()
+		pass
+	
 	Manager.open_door.emit(Input.is_action_just_pressed("accept_button"))
 	pass
 
-func collect_effect(in_range : bool, effect_to_collect : ActiveEffect, ncp : CharacterBody2D) -> void:
+func collect_effect(in_range : bool, ncp : Movements) -> void:
 	if Input.is_action_just_pressed("accept_button"):
-		if in_range and effect_to_collect and not effect_to_collect.is_active:
-			Manager.effect_collected.emit(effect_to_collect, true)
+		if in_range and ncp.held_effect and !ncp.held_effect.is_active:
+			print_debug("emition")
+			print_debug(YumeEffects.Value.keys()[ncp.held_effect.effect])
+			Manager.effect_collected.emit(ncp.held_effect, true)
 			pass
 	pass
 
@@ -111,4 +120,25 @@ func character_tiled_movement() -> void:
 	
 	super.handle_animation(playerAnimations, "walk_")
 	super.tile_based_movement(Direction, current_speed)
+	pass
+
+func effect_powers():
+	match current_effect:
+		YumeEffects.Value.SnowWoman:
+			print_debug("Snowwoman transformation")
+			pass
+		YumeEffects.Value.Killer:
+			print_debug("Killer button was pressed")
+			pass
+		YumeEffects.Value.Demon:
+			if has_light:
+				remove_child(light_source)
+				has_light = false
+			else:
+				add_child(light_source)
+				has_light = true
+			pass
+		_: # effect does not exist
+			print_debug("No effect for this. Put some sound effect for impossible")
+			pass
 	pass

@@ -4,6 +4,9 @@
 
 [resource]
 script = ExtResource("1_hc4pc")
+ID = 1
 effect = 1
 is_active = false
+has_been_activated = false
 can_use_outside_dream = false
+description_of_effect = ""

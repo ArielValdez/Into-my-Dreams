@@ -1,12 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4erb3wbnpfjh"]
+[gd_scene load_steps=5 format=3 uid="uid://b4erb3wbnpfjh"]
 
 [ext_resource type="Script" path="res://Scripts/GUI/effects_menu.gd" id="1_5200o"]
 [ext_resource type="Texture2D" uid="uid://co1bnv867as5n" path="res://Sprites/GUI/Character_Panel.png" id="1_yytsb"]
 [ext_resource type="Texture2D" uid="uid://jwdbl8kg5cdr" path="res://Sprites/Bed.png" id="3_nl25d"]
 [ext_resource type="Script" path="res://Scripts/Resources/effects_gui.gd" id="4_qw5pl"]
-[ext_resource type="Resource" uid="uid://bgxui0prj0jfw" path="res://Resources/Tutorial.tres" id="5_qe1a6"]
-[ext_resource type="Resource" uid="uid://b20tepn6bc0jt" path="res://Resources/Killer.tres" id="6_5ke53"]
-[ext_resource type="Resource" uid="uid://dcgpf7q4p5dlw" path="res://Resources/Dream.tres" id="7_yly6y"]
 
 [node name="EffectsMenu" type="Control"]
 process_mode = 3
@@ -85,7 +82,6 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 columns = 3
 script = ExtResource("4_qw5pl")
-active_effects = Array[Resource("res://Scripts/Resources/active_effect.gd")]([ExtResource("5_qe1a6"), ExtResource("6_5ke53"), ExtResource("7_yly6y")])
 button_size = Vector2(100, 36)
 
 [node name="ColorRect" type="ColorRect" parent="."]

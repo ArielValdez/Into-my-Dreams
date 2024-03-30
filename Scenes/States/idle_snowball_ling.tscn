@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbq81i1cpkded"]
+
+[ext_resource type="Script" path="res://Scripts/StateMachine/idle_snowball_ling.gd" id="1_5wim6"]
+
+[node name="IdleSnowballLing" type="Node"]
+script = ExtResource("1_5wim6")

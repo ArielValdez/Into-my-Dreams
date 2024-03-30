@@ -7,14 +7,11 @@ var in_range : bool = false
 
 func _ready() -> void:
 	Manager.connect("collected_effect_from_npc", send_effect)
-	print_debug("")
-	print_debug(YumeEffects.Value.keys()[held_effect.effect])
-	print_debug("")
 	pass
 
 func _input(event):
-	if event.is_action_pressed("accept_button"):
-		Manager.collected_effect_from_npc.emit(in_range, held_effect)
+	if Input.is_action_just_pressed("accept_button"):
+		Manager.collected_effect_from_npc.emit(in_range)
 
 # connected signals
 func _on_area_2d_body_entered(body : Node2D) -> void:
@@ -27,6 +24,6 @@ func _on_area_2d_body_exited(body : Node2D) -> void:
 		in_range = false
 	pass
 
-func send_effect(in_range : bool, effect : ActiveEffect):
-	Manager.player_character.collect_effect(in_range, effect, self)
+func send_effect(in_range : bool):
+	Manager.player_character.collect_effect(in_range, self)
 	pass

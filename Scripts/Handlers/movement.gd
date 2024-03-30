@@ -13,6 +13,12 @@ var is_moving : bool = false
 var this_body_sprite : Sprite2D
 var current_speed : float
 
+#private const
+var _vector_up_right : float = Vector2(1, -1).angle()
+var _vector_up_left : float = Vector2(-1, -1).angle()
+var _vector_down_right : float = Vector2(1, 1).angle()
+var _vector_down_left : float = Vector2(-1, 1).angle()
+
 func _ready():
 	pass
 
@@ -74,14 +80,22 @@ func handle_animation(animationPlayer : AnimationPlayer, animation : String, sho
 			if animationPlayer.is_playing() and should_stop:
 				animationPlayer.stop()
 		else:
-			var direction = "down"
-			if velocity.x < 0:
-				direction = "left"
-			elif velocity.x > 0:
-				direction = "right"
-			elif velocity.y < 0:
-				direction = "up"
+			var direction = get_direction_state(velocity)
 			
 			if animationPlayer.has_animation(animation + direction):
 				animationPlayer.play(animation + direction)
 	pass
+
+func get_direction_state(vel : Vector2) -> String:
+	var direction : String = "down"
+	var vel_angle : float = vel.angle()
+	
+	if vel_angle >= _vector_up_left and vel_angle <= _vector_up_right:
+		direction = "up"
+	elif vel_angle >= _vector_down_right and vel_angle <= _vector_down_left:
+		direction = "down"
+	elif vel_angle >= _vector_up_right and vel_angle <= _vector_down_right:
+		direction = "right"
+	else:
+		direction = "left"
+	return direction

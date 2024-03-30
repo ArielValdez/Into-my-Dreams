@@ -64,7 +64,8 @@ func sleep_or_wake_up_next_scene() -> void:
 
 func character_effect(effect: ActiveEffect):
 	if player_character.IsSleeping:
-		var anim_name : String = YumeEffects.Value.keys()[effect.effect]
+		player_character.remove_child(player_character.light_source)
+		player_character.has_light = false
 		
 		match effect.effect:
 			YumeEffects.Value.Tutorial:
@@ -77,7 +78,10 @@ func character_effect(effect: ActiveEffect):
 				pass
 			YumeEffects.Value.Killer:
 				print_debug("Killer button was pressed")
-				transform_player(effect.effect, SpriteManager.killer_sprite, anim_name, player_character.start_walk_speed, player_character.start_run_speed)
+				transform_player(effect.effect, SpriteManager.killer_sprite, "", player_character.start_walk_speed, player_character.start_run_speed)
+				pass
+			YumeEffects.Value.Demon:
+				transform_player(effect.effect, SpriteManager.demon_sprite, "", player_character.start_walk_speed, player_character.start_run_speed)
 				pass
 			_: # effect does not exist
 				print_debug("returning to default.")

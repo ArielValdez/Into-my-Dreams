@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://bvfoyknsfhgyr"]
+
+[ext_resource type="PackedScene" uid="uid://bfyl1kwq0i3rj" path="res://Scenes/Heritables/light_source.tscn" id="1_ksivw"]
+[ext_resource type="Texture2D" uid="uid://2dwhuypc4hkw" path="res://Sprites/LightShadow/2d_lights_and_shadows_neutral_point_light.jpg" id="2_nccl5"]
+[ext_resource type="Texture2D" uid="uid://cuoic10hfrot4" path="res://Sprites/Characters/Effects/Fire.png" id="2_wywy3"]
+
+[sub_resource type="Animation" id="Animation_aosac"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_o0x2i"]
+resource_name = "lit"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gmlcu"]
+_data = {
+"RESET": SubResource("Animation_aosac"),
+"lit": SubResource("Animation_o0x2i")
+}
+
+[node name="LightSource" instance=ExtResource("1_ksivw")]
+light_texture_scale = 2.1
+shadow_energy = 1.2
+shadow_texture_scale = 1.4
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -72)
+texture = ExtResource("2_wywy3")
+hframes = 4
+
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_gmlcu")
+}
+
+[node name="TextureLight" parent="." index="2"]
+texture = ExtResource("2_nccl5")
+
+[node name="Shadow" parent="." index="3"]
+texture = ExtResource("2_nccl5")

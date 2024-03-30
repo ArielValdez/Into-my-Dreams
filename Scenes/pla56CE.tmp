@@ -99,7 +99,6 @@ _data = {
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
 z_index = 1
-motion_mode = 1
 script = ExtResource("1_xuvvn")
 walk_speed = 150.0
 run_speed = 200.0

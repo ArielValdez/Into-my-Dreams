@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfyl1kwq0i3rj"]
+
+[ext_resource type="Script" path="res://Scripts/light_source.gd" id="1_bufsx"]
+
+[node name="LightSource" type="Node2D"]
+script = ExtResource("1_bufsx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="TextureLight" type="PointLight2D" parent="."]
+energy = 0.7
+texture_scale = 1.4
+
+[node name="Shadow" type="PointLight2D" parent="."]
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.0
+texture_scale = 0.7

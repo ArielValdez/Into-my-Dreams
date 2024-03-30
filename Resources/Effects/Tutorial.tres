@@ -4,6 +4,9 @@
 
 [resource]
 script = ExtResource("1_mwn87")
+ID = 0
 effect = 0
 is_active = true
+has_been_activated = true
 can_use_outside_dream = true
+description_of_effect = ""

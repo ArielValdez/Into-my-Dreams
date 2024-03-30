@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://y88po7mmxjkg"]
 
 [ext_resource type="PackedScene" uid="uid://q4v6wgblr381" path="res://Scenes/Heritables/ncp_character.tscn" id="1_nqoef"]
-[ext_resource type="Resource" uid="uid://xr2ro2g36km2" path="res://Resources/YukiOnna.tres" id="2_dx5pn"]
 [ext_resource type="Texture2D" uid="uid://cse70u0yuvklt" path="res://Sprites/Characters/NCP/YukiOnna.png" id="2_hxa1x"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/idle_snowwoman.gd" id="3_jna8r"]
+[ext_resource type="Resource" uid="uid://xr2ro2g36km2" path="res://Resources/Effects/YukiOnna.tres" id="2_y3hq8"]
+[ext_resource type="PackedScene" uid="uid://8g7dy18uf4a" path="res://Scenes/States/idle_snow_woman.tscn" id="4_mj2ui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gjmq3"]
 size = Vector2(16, 16)
@@ -101,7 +101,7 @@ _data = {
 }
 
 [node name="SnowWoman" instance=ExtResource("1_nqoef")]
-held_effect = ExtResource("2_dx5pn")
+held_effect = ExtResource("2_y3hq8")
 walk_speed = 100.0
 run_speed = 100.0
 
@@ -121,8 +121,6 @@ libraries = {
 }
 
 [node name="StateMachine" parent="." index="4" node_paths=PackedStringArray("initial_state")]
-initial_state = NodePath("IdleSnowWoman")
+initial_state = NodePath("")
 
-[node name="IdleSnowWoman" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy")]
-script = ExtResource("3_jna8r")
-enemy = NodePath("../..")
+[node name="IdleSnowWoman" parent="StateMachine" index="0" instance=ExtResource("4_mj2ui")]

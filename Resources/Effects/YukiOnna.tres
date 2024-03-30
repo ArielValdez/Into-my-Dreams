@@ -4,7 +4,9 @@
 
 [resource]
 script = ExtResource("1_e1g1d")
+ID = 3
 effect = 3
 is_active = false
+has_been_activated = false
 can_use_outside_dream = false
 description_of_effect = "Transform into a Snow woman"
