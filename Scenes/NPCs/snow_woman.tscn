@@ -121,6 +121,7 @@ libraries = {
 }
 
 [node name="StateMachine" parent="." index="4" node_paths=PackedStringArray("initial_state")]
-initial_state = NodePath("")
+initial_state = NodePath("IdleSnowWoman")
 
-[node name="IdleSnowWoman" parent="StateMachine" index="0" instance=ExtResource("4_mj2ui")]
+[node name="IdleSnowWoman" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy") instance=ExtResource("4_mj2ui")]
+enemy = NodePath("../..")

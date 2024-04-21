@@ -6,7 +6,7 @@ var Direction : Vector2
 
 
 var IsAtDoor : bool = false
-var IsSleeping : bool = true
+var IsSleeping : bool = false
 var CanMove : bool = true
 var has_light : bool = false
 

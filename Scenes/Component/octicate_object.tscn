@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://btwvlndqfesvl"]
+
+[ext_resource type="Script" path="res://Scripts/Components/octicate_object.gd" id="1_fyeiq"]
+
+[node name="OcticateObject" type="Node"]
+script = ExtResource("1_fyeiq")

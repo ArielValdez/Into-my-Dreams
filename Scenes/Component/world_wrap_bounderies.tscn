@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3qrxxdy87y7l"]
+
+[ext_resource type="Script" path="res://Scripts/Components/world_wrap_bounderies.gd" id="1_p6nmh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jcitt"]
+
+[node name="WorldWrapBounderies" type="Node"]
+script = ExtResource("1_p6nmh")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_jcitt")
+debug_color = Color(0.768627, 0.482353, 1, 0.419608)
+
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -21,10 +21,19 @@ var enable_camera_on_scene : bool = true
 
 var player_character : CharacterBody2D # should be a preload
 var spawn_player_at : Vector2
-
+var world_size : Vector2
 
 func _ready() -> void:
 	pass
+
+func get_world_size(current_world : TileMap) -> Vector2:
+	var world_size : Vector2 = Vector2.ZERO
+	if current_world != null:
+		var tilemap_rect = current_world.get_used_rect()
+		var tilemap_size = current_world.cell_quadrant_size
+		world_size = tilemap_rect.size * tilemap_size
+	
+	return world_size
 
 func load_scene() -> void:
 	if target_world != null or target_world != "":

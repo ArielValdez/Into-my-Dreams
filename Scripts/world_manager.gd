@@ -2,8 +2,6 @@ extends Node2D
 
 class_name WorldScene
 
-signal invoke_event
-
 @onready var tilemap : TileMap = get_node("TileMap")
 @onready var EventTimer : Timer = $WorldEventTimer
 
@@ -23,9 +21,8 @@ var rng : RandomNumberGenerator
 func _ready() -> void:
 	Manager.resize_camera_limit.emit(self)
 	Manager.pause_menu.on_main_menu = false
-
-	
 	# send level music
+	
 	pass
 
 func _process(delta : float) -> void:
