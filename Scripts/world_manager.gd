@@ -15,15 +15,18 @@ class_name WorldScene
 @export var camera_zero_off_set_limit : Vector2
 @export var world_music : AudioStream
 @export var rain_effect : PackedScene
+@export var jails : JailManager
 
 var rng : RandomNumberGenerator
 
 func _ready() -> void:
-	Manager.resize_camera_limit.emit(self)
-	Manager.pause_menu.on_main_menu = false
+	if jails != null:
+		jails.jails = _get_jail_children()
+	
 	# send level music
 	
-	pass
+	Manager.resize_camera_limit.emit(self)
+	Manager.pause_menu.on_main_menu = false
 
 func _process(delta : float) -> void:
 	await get_tree().process_frame
@@ -44,3 +47,13 @@ func spawn_world_events_by_timer():
 				pass
 	pass
 
+func _get_jail_children() -> Array[Jail]:
+	var jail_children : Array[Jail]
+	for item in jails.get_children():
+		if item is Jail:
+			print_debug(item.name)
+			jail_children.append(item)
+	
+	print_debug(jail_children.size())
+	
+	return jail_children

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdo7bb70kekk4"]
+
+[ext_resource type="Script" path="res://Scripts/Components/jail.gd" id="1_v4fsc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0530t"]
+
+[node name="Jail" type="Node2D"]
+script = ExtResource("1_v4fsc")
+
+[node name="Transport" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transport"]
+shape = SubResource("RectangleShape2D_0530t")

@@ -6,7 +6,7 @@
 script = ExtResource("1_rf56n")
 ID = 6
 effect = 11
-is_active = true
+is_active = false
 has_been_activated = true
 can_use_outside_dream = false
 description_of_effect = "Demon Effect"

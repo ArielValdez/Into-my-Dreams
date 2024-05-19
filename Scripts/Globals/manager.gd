@@ -5,12 +5,16 @@ signal effect_collected
 signal resize_camera_limit
 signal open_door
 signal go_to_next_scene
+signal got_to_jail
+signal got_effect_pop_up
+signal got_stabbed
 
 @onready var room_scene = preload("res://Scenes/Worlds/House/room.tscn")
 @onready var starting_area_dream_scene = preload("res://Scenes/Worlds/balcony_dream.tscn")
 
 var pause_menu : Control
 var effect_menu : Control
+var effect_pop_up : Control
 
 var new_scene : PackedScene
 
@@ -19,12 +23,9 @@ var target_world_door_id : int
 var send_interaction : bool
 var enable_camera_on_scene : bool = true
 
-var player_character : CharacterBody2D # should be a preload
+var player_character : CharacterBody2D
 var spawn_player_at : Vector2
 var world_size : Vector2
-
-func _ready() -> void:
-	pass
 
 func get_world_size(current_world : TileMap) -> Vector2:
 	var world_size : Vector2 = Vector2.ZERO
@@ -42,6 +43,19 @@ func load_scene() -> void:
 		print_debug("Add a world, please")
 	pass
 
+func change_to_next_scene(this_new_scene : PackedScene, transfer_position : Vector2) -> void:
+	var world : Node = this_new_scene.instantiate()
+	
+	TransitionScene.transition()
+	await TransitionScene.on_transition_finished
+	player_character.position = transfer_position
+	
+	get_tree().get_root().get_child(4).remove_child(player_character)
+	get_tree().get_root().add_child(world)
+	get_tree().get_root().get_child(4).free()
+	world.add_child(player_character)
+	pass
+
 func sleep_or_wake_up_next_scene() -> void:
 	var sleep_or_awake_scene : PackedScene
 	var transfer_position : Vector2
@@ -56,19 +70,9 @@ func sleep_or_wake_up_next_scene() -> void:
 		pass
 	pass
 	
-	var world : Node = sleep_or_awake_scene.instantiate()
-	
-	
-	TransitionScene.transition()
-	await TransitionScene.on_transition_finished
-	
-	get_tree().get_root().get_child(4).remove_child(player_character)
-	get_tree().get_root().add_child(world)
-	get_tree().get_root().get_child(4).free()
-	world.add_child(player_character)
+	change_to_next_scene(sleep_or_awake_scene, transfer_position)
 	
 	transform_player(YumeEffects.Value.Base, SpriteManager.default_player_sprite, "", player_character.start_walk_speed, player_character.start_run_speed)
-	player_character.position = transfer_position
 	player_character.CanMove = true
 
 func character_effect(effect: ActiveEffect):
@@ -91,6 +95,9 @@ func character_effect(effect: ActiveEffect):
 				pass
 			YumeEffects.Value.Demon:
 				transform_player(effect.effect, SpriteManager.demon_sprite, "", player_character.start_walk_speed, player_character.start_run_speed)
+				pass
+			YumeEffects.Value.Mini:
+				transform_player(effect.effect, SpriteManager.mini_sprite, "", player_character.start_walk_speed, player_character.start_run_speed)
 				pass
 			_: # effect does not exist
 				print_debug("returning to default.")

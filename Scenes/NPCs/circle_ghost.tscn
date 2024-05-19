@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://byb3vmeof5rbx"]
+
+[ext_resource type="PackedScene" uid="uid://q4v6wgblr381" path="res://Scenes/Heritables/ncp_character.tscn" id="1_kul22"]
+[ext_resource type="Texture2D" uid="uid://bxek11b26dphi" path="res://Sprites/Characters/NCP/Circle_Ghost.png" id="2_78oee"]
+[ext_resource type="PackedScene" uid="uid://bbq81i1cpkded" path="res://Scenes/States/idle_snowball_ling.tscn" id="3_0erh4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dg2d6"]
+
+[sub_resource type="Animation" id="Animation_o7bbl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_mr7kq"]
+resource_name = "move_left"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 5]
+}
+
+[sub_resource type="Animation" id="Animation_exuli"]
+resource_name = "move_right"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vrjjy"]
+_data = {
+"RESET": SubResource("Animation_o7bbl"),
+"move_left": SubResource("Animation_mr7kq"),
+"move_right": SubResource("Animation_exuli")
+}
+
+[node name="CircleGhost" instance=ExtResource("1_kul22")]
+walk_speed = 500.0
+run_speed = 500.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_dg2d6")
+
+[node name="Sprite2D" parent="." index="2"]
+position = Vector2(0, -25)
+texture = ExtResource("2_78oee")
+hframes = 4
+vframes = 2
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_vrjjy")
+}
+
+[node name="StateMachine" parent="." index="4" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("IdleSnowballLing")
+
+[node name="IdleSnowballLing" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy") instance=ExtResource("3_0erh4")]
+enemy = NodePath("../..")
+move_speed = 50.0
+idle_start = 12.0
+idle_end = 20.0
+walk_start = 0.5
+walk_end = 0.5

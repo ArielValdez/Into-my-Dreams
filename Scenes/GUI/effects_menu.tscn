@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/GUI/effects_menu.gd" id="1_5200o"]
 [ext_resource type="Texture2D" uid="uid://co1bnv867as5n" path="res://Sprites/GUI/Character_Panel.png" id="1_yytsb"]
-[ext_resource type="Texture2D" uid="uid://jwdbl8kg5cdr" path="res://Sprites/Bed.png" id="3_nl25d"]
+[ext_resource type="Texture2D" uid="uid://d38plkhbkcmf5" path="res://Sprites/Characters/PC/Yume.png" id="3_tmogi"]
 [ext_resource type="Script" path="res://Scripts/Resources/effects_gui.gd" id="4_qw5pl"]
 
 [node name="EffectsMenu" type="Control"]
@@ -47,7 +47,9 @@ offset_bottom = 256.0
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterVisual/CenterContainer"]
 position = Vector2(126.695, 115.071)
-texture = ExtResource("3_nl25d")
+texture = ExtResource("3_tmogi")
+hframes = 3
+vframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterVisual/CenterContainer"]
 

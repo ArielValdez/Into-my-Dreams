@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqryrposka1o5"]
+
+[ext_resource type="PackedScene" uid="uid://cgcj1odton3th" path="res://Scenes/Heritables/world_canvas.tscn" id="1_wpdnk"]
+[ext_resource type="PackedScene" uid="uid://b13up2jj6hlpn" path="res://Scenes/Component/jail_manager.tscn" id="2_d4ou0"]
+[ext_resource type="Texture2D" uid="uid://15m6dkqqruqa" path="res://Sprites/Background/night_sky_eyed.png" id="2_i0nfx"]
+
+[node name="ClaustrohemophobiaWorld" instance=ExtResource("1_wpdnk")]
+
+[node name="NightSkyEyed" type="Sprite2D" parent="." index="0"]
+z_index = -10
+position = Vector2(995, 486.5)
+scale = Vector2(1.54936, 1.54936)
+texture = ExtResource("2_i0nfx")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." index="2"]
+color = Color(1, 0.0509804, 0.0509804, 0.870588)
+
+[node name="TileMap" type="TileMap" parent="." index="3"]
+rendering_quadrant_size = 32
+format = 2
+
+[node name="JailManager" parent="." index="4" instance=ExtResource("2_d4ou0")]

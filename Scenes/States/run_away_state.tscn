@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcupec67o8o3b"]
+
+[ext_resource type="Script" path="res://Scripts/StateMachine/run_away_state.gd" id="1_lffkn"]
+
+[node name="RunAwayState" type="Node"]
+script = ExtResource("1_lffkn")

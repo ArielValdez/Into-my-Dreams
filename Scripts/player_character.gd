@@ -4,7 +4,6 @@ class_name PlayerCharacter
 
 var Direction : Vector2
 
-
 var IsAtDoor : bool = false
 var IsSleeping : bool = false
 var CanMove : bool = true
@@ -18,23 +17,23 @@ var anim_name : String = ""
 @onready var player_camera : Camera2D = $Camera2D
 @onready var playerAnimations : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D
-@onready var player_hitbox : CollisionShape2D = $CollisionShape2D
+@onready var player_hitbox : CollisionShape2D = $CollisionBox
 @onready var timer_for_sleep : Timer = $TriggerTimer
-@onready var camera : Camera2D = $Camera2D
-@onready var light_source : Node2D = preload("res://Scenes/Effects/demon_fire_ball.tscn").instantiate()
+
+var light_source : Node2D
 
 var start_walk_speed : float
 var start_run_speed : float
-
+var player_collected_effects : Array[ActiveEffect]
 
 signal interaction_signal
 
 func _init():
-	# should be called just once
 	Manager.player_character = self
-	pass
 
 func _ready() -> void:
+	Manager.player_character = self
+	
 	start_walk_speed = walk_speed
 	start_run_speed = run_speed
 	super.get_sprite_from_body(sprite)
@@ -58,27 +57,34 @@ func _input(event : InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("effect_action"):
 		effect_powers()
-		pass
 	
-	Manager.open_door.emit(Input.is_action_just_pressed("accept_button"))
+	if not Manager.effect_pop_up.on_pop_up:
+		Manager.open_door.emit(Input.is_action_just_pressed("accept_button"))
 	pass
 
-func collect_effect(in_range : bool, ncp : Movements) -> void:
+func collect_effect(in_range : bool, ncp : Enemy) -> void:
 	if Input.is_action_just_pressed("accept_button"):
 		if in_range and ncp.held_effect and !ncp.held_effect.is_active:
-			print_debug("emition")
-			print_debug(YumeEffects.Value.keys()[ncp.held_effect.effect])
-			Manager.effect_collected.emit(ncp.held_effect, true)
+			if !player_collected_effects.any(func(items: ActiveEffect): items.effect == ncp.held_effect.effect):
+				print_debug("emition")
+				print_debug(ncp.name)
+				Manager.effect_collected.emit(ncp.held_effect, true)
+				
+				Manager.effect_pop_up.visible = true
+				get_tree().paused = true
+				
+				Manager.effect_pop_up.on_pop_up = true
 			pass
 	pass
 
 func handleCollission() -> void:
 	if !CanMove:
-		var collission : KinematicCollision2D
-		var collider : Object
-		for i in get_slide_collision_count():
-			collission = get_slide_collision(i)
-			collider = collission.get_collider()
+		#var collission : KinematicCollision2D
+		#var collider : Object
+		#for i in get_slide_collision_count():
+			#collission = get_slide_collision(i)
+			#collider = collission.get_collider()
+			pass
 	pass
 
 func character_movement() -> void:
@@ -131,12 +137,17 @@ func effect_powers():
 			print_debug("Killer button was pressed")
 			pass
 		YumeEffects.Value.Demon:
-			if has_light:
+			if light_source != null:
 				remove_child(light_source)
 				has_light = false
+				light_source = null
 			else:
+				light_source = load("res://Scenes/Effects/demon_fire_ball.tscn").instantiate()
 				add_child(light_source)
 				has_light = true
+			pass
+		YumeEffects.Value.Mini:
+			print_debug("Mini button was pressed")
 			pass
 		_: # effect does not exist
 			print_debug("No effect for this. Put some sound effect for impossible")

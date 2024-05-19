@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://q7os35y5ahvb"]
+
+[ext_resource type="Script" path="res://Scripts/StateMachine/self_depreciation_state.gd" id="1_2drni"]
+
+[node name="self_depretiation_chace" type="Node"]
+script = ExtResource("1_2drni")

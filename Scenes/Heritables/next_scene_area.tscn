@@ -9,6 +9,7 @@ size = Vector2(32, 32)
 script = ExtResource("1_3mw3d")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_td3mb")

@@ -38,6 +38,8 @@ func obtain_new_effect(effect : ActiveEffect, activate_effect : bool = true):
 
 func _load_active_effects(effect : ActiveEffect, effect_is_activated : bool = false):
 	#load active effects with load in gridContainer with buttons
+	if Manager.player_character.player_collected_effects.any(func(items: ActiveEffect): items.effect == effect.effect and effect.is_active):
+		Manager.player_character.player_collected_effects.add(effect)
 	if !active_effects.any(func(items: ActiveEffect): items.effect == effect.effect):
 		remove_children()
 		

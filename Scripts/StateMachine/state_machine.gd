@@ -12,7 +12,7 @@ func _ready():
 			states[child.name.to_lower()] = child
 			child.transitioned.connect(on_child_transition)
 	
-	if initial_state:
+	if initial_state != null:
 		initial_state.enter()
 		current_state = initial_state
 	pass
@@ -33,8 +33,8 @@ func on_child_transition(state : State, new_state_name : String):
 	if state == current_state:
 		var new_state = states.get(new_state_name.to_lower())
 		
-		if new_state:
-			if current_state:
+		if new_state != null:
+			if current_state != null:
 				current_state.exit()
 			
 			new_state.enter()

@@ -7,6 +7,8 @@
 size = Vector2(8, 8)
 
 [node name="Mini" instance=ExtResource("1_g5vqo")]
+collision_layer = 2
+collision_mask = 15
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, -4)

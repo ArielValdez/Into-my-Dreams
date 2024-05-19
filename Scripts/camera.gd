@@ -1,6 +1,10 @@
 extends Camera2D
 
 const ZERO_LIMIT : float = 0
+var super_limits_right : float = limit_right
+var super_limits_bottom : float = limit_bottom
+var super_limits_left : float = limit_left
+var super_limits_top : float = limit_top
 
 func _ready() -> void:
 	Manager.resize_camera_limit.connect(resize_map_limit)
@@ -19,6 +23,10 @@ func resize_map_limit(current_scene : WorldScene) -> void:
 			
 			print("x size: " + str(limit_right) + ", y size: " + str(limit_bottom))
 		elif current_scene.tilemap != null and current_scene.is_looping_world:
+			limit_right = super_limits_right
+			limit_top = super_limits_top
+			limit_bottom = super_limits_bottom
+			limit_left = super_limits_left
 			pass
 		pass
 	pass

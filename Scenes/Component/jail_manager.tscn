@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b13up2jj6hlpn"]
+
+[ext_resource type="Script" path="res://Scripts/Components/jail_manager.gd" id="1_sdru0"]
+
+[node name="JailManager" type="Node"]
+script = ExtResource("1_sdru0")

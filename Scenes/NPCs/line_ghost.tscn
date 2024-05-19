@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://cfh61y87w68pk"]
+
+[ext_resource type="PackedScene" uid="uid://q4v6wgblr381" path="res://Scenes/Heritables/ncp_character.tscn" id="1_p76i6"]
+[ext_resource type="Texture2D" uid="uid://dt61gq6110oxw" path="res://Sprites/Characters/NCP/Line_Ghost.png" id="2_wcoxu"]
+[ext_resource type="PackedScene" uid="uid://8hxefkaksqce" path="res://Scenes/States/ghost_state.tscn" id="3_er1nx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wb4ge"]
+size = Vector2(18, 18)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oteqk"]
+radius = 54.0833
+
+[sub_resource type="Animation" id="Animation_m7vau"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_nmmi4"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hxn0y"]
+_data = {
+"RESET": SubResource("Animation_m7vau"),
+"idle": SubResource("Animation_nmmi4")
+}
+
+[node name="LineGhost" instance=ExtResource("1_p76i6")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -13)
+shape = SubResource("RectangleShape2D_wb4ge")
+
+[node name="AreaTransport" type="Area2D" parent="." index="1"]
+collision_layer = 14
+
+[node name="InteractionShape" type="CollisionShape2D" parent="AreaTransport" index="0"]
+position = Vector2(0, -15)
+shape = SubResource("CircleShape2D_oteqk")
+debug_color = Color(0.8414, 0, 0.405071, 0.419608)
+
+[node name="Sprite2D" parent="." index="3"]
+position = Vector2(0, -19)
+texture = ExtResource("2_wcoxu")
+vframes = 2
+
+[node name="AnimationPlayer" parent="." index="4"]
+libraries = {
+"": SubResource("AnimationLibrary_hxn0y")
+}
+
+[node name="StateMachine" parent="." index="5" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("GhostState")
+
+[node name="GhostState" parent="StateMachine" index="0" instance=ExtResource("3_er1nx")]
+
+[connection signal="body_entered" from="AreaTransport" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="AreaTransport" to="." method="_on_area_2d_body_exited"]

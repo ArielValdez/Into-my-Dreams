@@ -9,6 +9,7 @@ radius = 38.2099
 
 [node name="NCPCharacter" type="CharacterBody2D"]
 z_index = 1
+collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_3fr2v")
 
@@ -17,6 +18,7 @@ z_index = 1
 shape = null
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 14
 
 [node name="InteractionShape" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -15)
@@ -31,3 +33,4 @@ debug_color = Color(0.247059, 0.545098, 0, 0.419608)
 script = ExtResource("4_r7kvc")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

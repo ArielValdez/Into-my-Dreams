@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://ceryv67e00342"]
+
+[ext_resource type="PackedScene" uid="uid://q4v6wgblr381" path="res://Scenes/Heritables/ncp_character.tscn" id="1_sbfey"]
+[ext_resource type="Texture2D" uid="uid://3dhovnuycesb" path="res://Sprites/Characters/NCP/Shadow_Lamenter.png" id="2_ytvlp"]
+[ext_resource type="PackedScene" uid="uid://bco76gdt5yi4c" path="res://Scenes/States/grief_state.tscn" id="3_36ub3"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/grief_state.gd" id="4_fj2tw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbkqa"]
+size = Vector2(36, 18)
+
+[sub_resource type="Animation" id="Animation_mgtwx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ortlh"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wj4yt"]
+_data = {
+"RESET": SubResource("Animation_mgtwx"),
+"idle": SubResource("Animation_ortlh")
+}
+
+[node name="Lamenter" instance=ExtResource("1_sbfey")]
+collision_layer = 2
+collision_mask = 15
+walk_speed = 5.0
+run_speed = 5.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_gbkqa")
+
+[node name="Sprite2D" parent="." index="2"]
+position = Vector2(0, -26)
+texture = ExtResource("2_ytvlp")
+hframes = 4
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_wj4yt")
+}
+
+[node name="StateMachine" parent="." index="4" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("GriefState")
+
+[node name="GriefState" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy", "animation_player") instance=ExtResource("3_36ub3")]
+script = ExtResource("4_fj2tw")
+enemy = NodePath("../..")
+animation_player = NodePath("../../AnimationPlayer")
+move_speed = 2.0
+idle_start = 50.0
+idle_end = 120.0
+walk_start = 5.0
+walk_end = 15.0
+times_move_start = 2
+times_move_end = 3
+direction_to_move = Vector2(-1, 0)

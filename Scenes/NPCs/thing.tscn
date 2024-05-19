@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0o3wx50lbsnh"]
+
+[ext_resource type="PackedScene" uid="uid://q4v6wgblr381" path="res://Scenes/Heritables/ncp_character.tscn" id="1_fsyhy"]
+[ext_resource type="Texture2D" uid="uid://dm1krf7n4pawy" path="res://Sprites/Characters/NCP/THAT_Thing.png" id="2_dwvk5"]
+[ext_resource type="PackedScene" uid="uid://2c76gufjgt27" path="res://Scenes/States/thing_state.tscn" id="3_so51e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ry4ac"]
+size = Vector2(56, 20)
+
+[sub_resource type="Animation" id="Animation_0jppl"]
+resource_name = "stabbed"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_pm1xh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0f04t"]
+_data = {
+"RESET": SubResource("Animation_pm1xh"),
+"stabbed": SubResource("Animation_0jppl")
+}
+
+[node name="Thing" instance=ExtResource("1_fsyhy")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_ry4ac")
+
+[node name="Sprite2D" parent="." index="2"]
+position = Vector2(0, -56)
+texture = ExtResource("2_dwvk5")
+hframes = 2
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_0f04t")
+}
+
+[node name="StateMachine" parent="." index="4" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("ThingState")
+
+[node name="ThingState" parent="StateMachine" index="0" node_paths=PackedStringArray("animation_player", "enemy") instance=ExtResource("3_so51e")]
+animation_player = NodePath("../../AnimationPlayer")
+enemy = NodePath("../..")
