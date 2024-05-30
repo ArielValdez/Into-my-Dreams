@@ -10,3 +10,4 @@ Dream simulator inspired by Yume Nikki
 * Isometric maps and platformer like maps
 * Minigames on a TV at the start of the game (just like Yume Nikki)
 * Inner Demon: NPC that randomly spawns in a world the PC is in, and would try to wake up forcibly the PC
+* No fighting just walk
