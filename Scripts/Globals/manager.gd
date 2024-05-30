@@ -1,5 +1,7 @@
 extends Node
 
+class_name SceneSignalManager
+
 signal collected_effect_from_npc
 signal effect_collected
 signal resize_camera_limit
@@ -23,7 +25,7 @@ var target_world_door_id : int
 var send_interaction : bool
 var enable_camera_on_scene : bool = true
 
-var player_character : CharacterBody2D
+var player_character : PlayerCharacter
 var spawn_player_at : Vector2
 var world_size : Vector2
 
@@ -43,12 +45,15 @@ func load_scene() -> void:
 		print_debug("Add a world, please")
 	pass
 
-func change_to_next_scene(this_new_scene : PackedScene, transfer_position : Vector2) -> void:
+func change_to_next_scene(this_new_scene : PackedScene, transfer_position : Vector2, waking_up : bool = false) -> void:
 	var world : Node = this_new_scene.instantiate()
 	
 	TransitionScene.transition()
 	await TransitionScene.on_transition_finished
 	player_character.position = transfer_position
+	
+	if waking_up:
+		transform_player(YumeEffects.Value.Base, SpriteManager.default_player_sprite, "", player_character.start_walk_speed, player_character.start_run_speed)
 	
 	get_tree().get_root().get_child(4).remove_child(player_character)
 	get_tree().get_root().add_child(world)
@@ -70,9 +75,8 @@ func sleep_or_wake_up_next_scene() -> void:
 		pass
 	pass
 	
-	change_to_next_scene(sleep_or_awake_scene, transfer_position)
+	change_to_next_scene(sleep_or_awake_scene, transfer_position, true)
 	
-	transform_player(YumeEffects.Value.Base, SpriteManager.default_player_sprite, "", player_character.start_walk_speed, player_character.start_run_speed)
 	player_character.CanMove = true
 
 func character_effect(effect: ActiveEffect):
@@ -121,13 +125,15 @@ func transform_player(effect : YumeEffects.Value, sprite_transformation : Textur
 	if player_character.current_effect == effect:
 		player_character.anim_name = ""
 		player_character.current_effect = YumeEffects.Value.Base
-		player_character.sprite.texture = SpriteManager.default_player_sprite
+		if player_character.sprite != null:
+			player_character.sprite.texture = SpriteManager.default_player_sprite
 		player_character.walk_speed = player_character.start_walk_speed
 		player_character.run_speed = player_character.start_run_speed
 	else:
 		player_character.current_effect = effect
 		player_character.anim_name = anim_name
-		player_character.sprite.texture = sprite_transformation
+		if player_character.sprite != null:
+			player_character.sprite.texture = sprite_transformation
 		player_character.walk_speed = walk_speed_change
 		player_character.run_speed = run_speed_change
 		pass

@@ -5,6 +5,7 @@ class_name WorldScene
 @onready var tilemap : TileMap = get_node("TileMap")
 @onready var EventTimer : Timer = $WorldEventTimer
 
+@export var frame_limit : int = 30
 @export var WorldEvents : Array[WorldEvent]
 @export var Panoram : Image
 @export var EventsAreByTimer : bool
@@ -18,10 +19,24 @@ class_name WorldScene
 @export var jails : JailManager
 
 var rng : RandomNumberGenerator
+var has_rain : bool = false
+
+func _init() -> void:
+	Engine.max_fps = frame_limit
 
 func _ready() -> void:
 	if jails != null:
 		jails.jails = _get_jail_children()
+	
+	if Manager.player_character != null:
+		for item in Manager.player_character.get_children():
+			if item is RainParticles:
+				has_rain = true
+				if get_rid_rain_effect:
+					Manager.player_character.remove_child(item)
+		
+		if rain_effect != null && !has_rain:
+			Manager.player_character.add_child(rain_effect.instantiate())
 	
 	# send level music
 	

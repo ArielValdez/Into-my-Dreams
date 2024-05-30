@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://xvkrnycfig6u"]
+[gd_scene load_steps=6 format=3 uid="uid://xvkrnycfig6u"]
 
 [ext_resource type="PackedScene" uid="uid://q4v6wgblr381" path="res://Scenes/Heritables/ncp_character.tscn" id="1_l8kq3"]
 [ext_resource type="Texture2D" uid="uid://baq3aeioj8fut" path="res://Sprites/Characters/NCP/Shadow_blob.png" id="2_6kldg"]
@@ -7,13 +7,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_67o3a"]
 size = Vector2(50, 20)
-
-[sub_resource type="Environment" id="Environment_seraj"]
-background_mode = 3
-background_canvas_max_layer = 2
-glow_enabled = true
-glow_intensity = 1.65
-glow_strength = 1.5
 
 [node name="ShadowBlob" instance=ExtResource("1_l8kq3")]
 walk_speed = 25.0
@@ -38,6 +31,3 @@ initial_state = NodePath("stalking_walk")
 [node name="stalking_walk" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy") instance=ExtResource("3_fqj37")]
 enemy = NodePath("../..")
 walk_speed = 25.0
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="5"]
-environment = SubResource("Environment_seraj")

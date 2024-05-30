@@ -106,6 +106,7 @@ _data = {
 
 [node name="Mina" instance=ExtResource("1_6lw85")]
 collision_layer = 8
+collision_mask = 9
 script = ExtResource("2_efujx")
 walk_speed = 150.0
 run_speed = 200.0

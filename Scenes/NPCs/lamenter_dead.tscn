@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgvqps7ln8vip"]
+
+[ext_resource type="PackedScene" uid="uid://q4v6wgblr381" path="res://Scenes/Heritables/ncp_character.tscn" id="1_glryh"]
+[ext_resource type="Texture2D" uid="uid://did3yjlgw4a84" path="res://Sprites/Characters/NCP/Corpse_Lamenter.png" id="2_b7njl"]
+[ext_resource type="Resource" uid="uid://b20tepn6bc0jt" path="res://Resources/Effects/Killer.tres" id="2_qp6la"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygve0"]
+
+[node name="LamenterDead" instance=ExtResource("1_glryh")]
+held_effect = ExtResource("2_qp6la")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_ygve0")
+
+[node name="Sprite2D" parent="." index="2"]
+position = Vector2(0, -23)
+texture = ExtResource("2_b7njl")

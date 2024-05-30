@@ -554,7 +554,7 @@ position = Vector2(3888, 1728)
 position = Vector2(640, 3917)
 
 [node name="Thing" parent="." index="8" instance=ExtResource("12_3120l")]
-position = Vector2(4512, 317)
+position = Vector2(4513, 318)
 
 [node name="JailManager" parent="." index="9" instance=ExtResource("6_o3ktp")]
 

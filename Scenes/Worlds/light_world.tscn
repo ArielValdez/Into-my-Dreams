@@ -8,7 +8,7 @@ tile_size = Vector2i(32, 32)
 [node name="LightWorld" instance=ExtResource("1_a7e7f")]
 
 [node name="Light" type="CanvasModulate" parent="." index="1"]
-color = Color(1, 1, 1, 0.552941)
+color = Color(1, 1, 1, 0.886275)
 
 [node name="TileMap" type="TileMap" parent="." index="2"]
 tile_set = SubResource("TileSet_q7h6g")
