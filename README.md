@@ -13,3 +13,6 @@ Dream simulator inspired by Yume Nikki
 * Minigames on a TV at the start of the game (just like Yume Nikki)
 * Inner Demon: NPC that randomly spawns in a world the PC is in, and would try to wake up forcibly the PC
 * No fighting just walk
+* World events: Events that happen randomly when in a world
+* Random events when an action is done
+* Garanteed events when an action is done
