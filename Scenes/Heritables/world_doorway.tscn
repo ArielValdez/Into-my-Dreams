@@ -32,3 +32,6 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone"]
 position = Vector2(0, 11)
 shape = SubResource("RectangleShape2D_xm6qd")
+
+[connection signal="body_entered" from="InteractionZone" to="." method="_on_interaction_zone_body_entered"]
+[connection signal="body_exited" from="InteractionZone" to="." method="_on_interaction_zone_body_exited"]

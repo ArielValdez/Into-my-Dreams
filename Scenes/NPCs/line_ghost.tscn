@@ -3,12 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://q4v6wgblr381" path="res://Scenes/Heritables/ncp_character.tscn" id="1_p76i6"]
 [ext_resource type="Texture2D" uid="uid://dt61gq6110oxw" path="res://Sprites/Characters/NCP/Line_Ghost.png" id="2_wcoxu"]
 [ext_resource type="PackedScene" uid="uid://8hxefkaksqce" path="res://Scenes/States/ghost_state.tscn" id="3_er1nx"]
+[ext_resource type="PackedScene" uid="uid://crtxwml5vk04u" path="res://Scenes/Heritables/next_scene_area.tscn" id="4_atb8q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wb4ge"]
 size = Vector2(18, 18)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_oteqk"]
-radius = 54.0833
 
 [sub_resource type="Animation" id="Animation_m7vau"]
 length = 0.001
@@ -54,28 +52,22 @@ _data = {
 position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_wb4ge")
 
-[node name="AreaTransport" type="Area2D" parent="." index="1"]
-collision_layer = 14
-
-[node name="InteractionShape" type="CollisionShape2D" parent="AreaTransport" index="0"]
-position = Vector2(0, -15)
-shape = SubResource("CircleShape2D_oteqk")
-debug_color = Color(0.8414, 0, 0.405071, 0.419608)
-
-[node name="Sprite2D" parent="." index="3"]
+[node name="Sprite2D" parent="." index="2"]
 position = Vector2(0, -19)
 texture = ExtResource("2_wcoxu")
 vframes = 2
 
-[node name="AnimationPlayer" parent="." index="4"]
+[node name="AnimationPlayer" parent="." index="3"]
 libraries = {
 "": SubResource("AnimationLibrary_hxn0y")
 }
 
-[node name="StateMachine" parent="." index="5" node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" parent="." index="4" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("GhostState")
 
 [node name="GhostState" parent="StateMachine" index="0" instance=ExtResource("3_er1nx")]
 
-[connection signal="body_entered" from="AreaTransport" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="AreaTransport" to="." method="_on_area_2d_body_exited"]
+[node name="NextSceneArea" parent="." index="5" instance=ExtResource("4_atb8q")]
+position = Vector2(0, -13)
+next_scene_name = "yellow_world"
+scene_id = 3

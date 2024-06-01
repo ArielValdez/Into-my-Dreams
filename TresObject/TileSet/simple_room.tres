@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=11 format=3 uid="uid://dvwlxcsxstffo"]
 
 [ext_resource type="Texture2D" uid="uid://begpu6g7hqcwh" path="res://Sprites/Tiles/Simple_Room_Tiles.png" id="1_f6t07"]
-[ext_resource type="Texture2D" uid="uid://bko5lo4u2hk3w" path="res://Sprites/Door.png" id="2_nq5vf"]
+[ext_resource type="Texture2D" uid="uid://bko5lo4u2hk3w" path="res://Sprites/Door/Door.png" id="2_nq5vf"]
 [ext_resource type="Texture2D" uid="uid://wkjovf7v6m0n" path="res://Sprites/Decorations/NightPictureDream.png" id="3_1xr3h"]
 [ext_resource type="PackedScene" uid="uid://b1rtmue0wymg3" path="res://Scenes/sleeping_bed.tscn" id="3_p54sp"]
 [ext_resource type="Texture2D" uid="uid://q0orh0q6d4ue" path="res://Sprites/Decorations/NightPicture.png" id="4_ah5jl"]

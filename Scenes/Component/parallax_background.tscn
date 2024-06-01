@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://xm8ej812ojpo"]
+
+[ext_resource type="Shader" path="res://Scenes/Shader/claustrohemophobia_world.gdshader" id="1_bliyg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8tsm5"]
+shader = ExtResource("1_bliyg")
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_8tsm5")
+offset_right = 40.0
+offset_bottom = 40.0

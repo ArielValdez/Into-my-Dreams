@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0seojwa8dao7"]
+
+[ext_resource type="Texture2D" uid="uid://d2u2114u7s5mu" path="res://Sprites/Characters/PC/front_view_yume.png" id="1_y70hc"]
+
+[node name="Node2D" type="Node2D"]
+z_index = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.341176)
+position = Vector2(0, -35)
+texture = ExtResource("1_y70hc")

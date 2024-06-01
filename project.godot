@@ -26,6 +26,20 @@ MenusManager="*res://Scenes/Globals/Menus.tscn"
 
 window/stretch/mode="canvas_items"
 
+[file_customization]
+
+folder_colors={
+"res://Scenes/": "yellow",
+"res://Scenes/Component/": "red",
+"res://Scenes/Effects/": "orange",
+"res://Scenes/GUI/": "teal",
+"res://Scenes/Globals/": "green",
+"res://Scenes/Heritables/": "blue",
+"res://Scenes/NPCs/": "purple",
+"res://Scenes/Shader/": "pink",
+"res://Scenes/States/": "gray"
+}
+
 [input]
 
 ui_accept={

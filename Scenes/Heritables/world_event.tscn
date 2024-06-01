@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://capyq6st7vc6g"]
+
+[ext_resource type="Script" path="res://Scripts/world_event_class.gd" id="1_hlgee"]
+
+[node name="WorldEvent" type="Node"]
+script = ExtResource("1_hlgee")

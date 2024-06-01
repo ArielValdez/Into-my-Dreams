@@ -7,7 +7,6 @@ class_name WorldScene
 
 @export var frame_limit : int = 30
 @export var WorldEvents : Array[WorldEvent]
-@export var Panoram : Image
 @export var EventsAreByTimer : bool
 @export var is_looping_world : bool = false
 @export var get_rid_rain_effect : bool = true
@@ -20,11 +19,15 @@ class_name WorldScene
 
 var rng : RandomNumberGenerator
 var has_rain : bool = false
+var is_event_spawning : bool = false
+var event_fail_timer : float = 60
 
 func _init() -> void:
 	Engine.max_fps = frame_limit
 
 func _ready() -> void:
+	rng = RandomNumberGenerator.new()
+	
 	if jails != null:
 		jails.jails = _get_jail_children()
 	
@@ -46,21 +49,31 @@ func _ready() -> void:
 func _process(delta : float) -> void:
 	await get_tree().process_frame
 	spawn_world_events_by_timer()
+
+func _exit_tree():
 	pass
 
 func spawn_world_events_by_timer():
-	if WorldEvents:
+	if !is_event_spawning and WorldEvents != null:
 		for event in WorldEvents:
-			EventTimer.start(event.ThisEventTick)
-			
-			await EventTimer.timeout
-			if (rng.Randf() < event.Chance):
-				# spawn event into scene
-				add_child(event)
-				
+			if (rng.randf() <= event.Chance):
 				WorldEvents.erase(event)
-				pass
-	pass
+				EventTimer.start(event.ThisEventTick)
+				
+				is_event_spawning = true
+				await EventTimer.timeout
+				is_event_spawning = false
+				
+				# spawn event into scene
+				var event_spawned : Node2D = event.spawned_event.instantiate()
+				event_spawned.position = event.Coordinates
+				add_child(event_spawned)
+			else:
+				EventTimer.start(event_fail_timer)
+				
+				is_event_spawning = true
+				await EventTimer.timeout
+				is_event_spawning = false
 
 func _get_jail_children() -> Array[Jail]:
 	var jail_children : Array[Jail]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwylmbladtrr1"]
+[gd_scene load_steps=13 format=3 uid="uid://dwylmbladtrr1"]
 
 [ext_resource type="PackedScene" uid="uid://cgcj1odton3th" path="res://Scenes/Heritables/world_canvas.tscn" id="1_aowto"]
 [ext_resource type="PackedScene" uid="uid://cqmka7v1s0c0f" path="res://Scenes/Component/snow_particles.tscn" id="2_356jk"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bdo7bb70kekk4" path="res://Scenes/Component/jail.tscn" id="6_gqia4"]
 [ext_resource type="PackedScene" uid="uid://c8jqbdyt1sw64" path="res://Scenes/NPCs/snowball_ling.tscn" id="8_vxbwt"]
 [ext_resource type="PackedScene" uid="uid://bc0i0cvbunx01" path="res://Scenes/NPCs/self_2.tscn" id="9_d5p1h"]
+[ext_resource type="PackedScene" uid="uid://bq8r5i6iru2ey" path="res://Scenes/player_character.tscn" id="10_8ofcy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbgul"]
 texture = ExtResource("3_dx882")
@@ -220,7 +221,7 @@ scene_id = 1
 spawn_player_at = Vector2(4975, 1380)
 
 [node name="SnowWorldUpperArea" parent="." index="6" instance=ExtResource("6_36qqd")]
-position = Vector2(2001, 465)
+position = Vector2(2001, 462)
 next_scene_name = "snow_world"
 scene_id = 2
 spawn_player_at = Vector2(3215, 125)
@@ -239,3 +240,6 @@ position = Vector2(326, 2574)
 
 [node name="Mina" parent="." index="11" instance=ExtResource("9_d5p1h")]
 position = Vector2(7476, 2232)
+
+[node name="PlayerCharacter" parent="." index="12" instance=ExtResource("10_8ofcy")]
+position = Vector2(22407, 2984)

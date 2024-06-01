@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://byb3vmeof5rbx"]
+[gd_scene load_steps=10 format=3 uid="uid://byb3vmeof5rbx"]
 
 [ext_resource type="PackedScene" uid="uid://q4v6wgblr381" path="res://Scenes/Heritables/ncp_character.tscn" id="1_kul22"]
 [ext_resource type="Texture2D" uid="uid://bxek11b26dphi" path="res://Sprites/Characters/NCP/Circle_Ghost.png" id="2_78oee"]
 [ext_resource type="PackedScene" uid="uid://bbq81i1cpkded" path="res://Scenes/States/idle_snowball_ling.tscn" id="3_0erh4"]
+[ext_resource type="PackedScene" uid="uid://crtxwml5vk04u" path="res://Scenes/Heritables/next_scene_area.tscn" id="4_gr5hi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dg2d6"]
 
@@ -91,3 +92,8 @@ idle_start = 12.0
 idle_end = 20.0
 walk_start = 0.5
 walk_end = 0.5
+
+[node name="NextSceneArea" parent="." index="5" instance=ExtResource("4_gr5hi")]
+position = Vector2(0, -12)
+next_scene_name = "red_world"
+scene_id = 1

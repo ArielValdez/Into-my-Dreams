@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://l1ux0vh3kt8f"
-path="res://.godot/imported/SnowDoor.png-63f0a5255b7178d3d443cd0ce8524c7b.ctex"
+path="res://.godot/imported/SnowDoor.png-87c4d4eda5c52a1f8bad0155bc54d5d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/SnowDoor.png"
-dest_files=["res://.godot/imported/SnowDoor.png-63f0a5255b7178d3d443cd0ce8524c7b.ctex"]
+source_file="res://Sprites/Door/SnowDoor.png"
+dest_files=["res://.godot/imported/SnowDoor.png-87c4d4eda5c52a1f8bad0155bc54d5d1.ctex"]
 
 [params]
 

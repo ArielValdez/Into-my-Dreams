@@ -3,12 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://q4v6wgblr381" path="res://Scenes/Heritables/ncp_character.tscn" id="1_hdxv8"]
 [ext_resource type="Texture2D" uid="uid://bv4f2tg7te68g" path="res://Sprites/Characters/NCP/Trriangle_Ghost.png" id="2_x2btd"]
 [ext_resource type="PackedScene" uid="uid://8hxefkaksqce" path="res://Scenes/States/ghost_state.tscn" id="3_8oqhg"]
+[ext_resource type="PackedScene" uid="uid://crtxwml5vk04u" path="res://Scenes/Heritables/next_scene_area.tscn" id="4_cspyi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wb4ge"]
 size = Vector2(56, 20)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_sm7au"]
-radius = 54.0833
 
 [sub_resource type="Animation" id="Animation_m7vau"]
 length = 0.001
@@ -54,26 +52,24 @@ _data = {
 position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_wb4ge")
 
-[node name="AreaTransport" type="Area2D" parent="." index="1"]
-collision_layer = 14
-
-[node name="InteractionShape" type="CollisionShape2D" parent="AreaTransport" index="0"]
-position = Vector2(0, -15)
-shape = SubResource("CircleShape2D_sm7au")
-debug_color = Color(0.8414, 0, 0.405071, 0.419608)
-
-[node name="Sprite2D" parent="." index="3"]
+[node name="Sprite2D" parent="." index="2"]
 position = Vector2(0, -32)
 texture = ExtResource("2_x2btd")
 hframes = 2
 
-[node name="AnimationPlayer" parent="." index="4"]
+[node name="AnimationPlayer" parent="." index="3"]
 libraries = {
 "": SubResource("AnimationLibrary_hxn0y")
 }
 
-[node name="StateMachine" parent="." index="5" node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" parent="." index="4" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("GhostState")
 
 [node name="GhostState" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy") instance=ExtResource("3_8oqhg")]
 enemy = NodePath("../..")
+
+[node name="NextSceneArea" parent="." index="5" instance=ExtResource("4_cspyi")]
+position = Vector2(0, -14)
+scale = Vector2(1.95747, 1.00438)
+next_scene_name = "blue_world"
+scene_id = 2

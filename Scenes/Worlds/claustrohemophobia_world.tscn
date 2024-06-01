@@ -1,11 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqryrposka1o5"]
+[gd_scene load_steps=13 format=3 uid="uid://dqryrposka1o5"]
 
 [ext_resource type="PackedScene" uid="uid://cgcj1odton3th" path="res://Scenes/Heritables/world_canvas.tscn" id="1_wpdnk"]
 [ext_resource type="PackedScene" uid="uid://b13up2jj6hlpn" path="res://Scenes/Component/jail_manager.tscn" id="2_d4ou0"]
-[ext_resource type="Shader" path="res://Scenes/Shader/claustrohemophobia_world.gdshader" id="2_fbru3"]
 [ext_resource type="Texture2D" uid="uid://dwvev8nowdo4b" path="res://Sprites/Tiles/blood_world_tiles.png" id="2_fwij1"]
 [ext_resource type="Texture2D" uid="uid://15m6dkqqruqa" path="res://Sprites/Background/night_sky_eyed.png" id="2_i0nfx"]
 [ext_resource type="PackedScene" uid="uid://bdo7bb70kekk4" path="res://Scenes/Component/jail.tscn" id="4_tyjn4"]
+[ext_resource type="PackedScene" uid="uid://xm8ej812ojpo" path="res://Scenes/Component/parallax_background.tscn" id="5_4cj6i"]
 [ext_resource type="PackedScene" uid="uid://bc0i0cvbunx01" path="res://Scenes/NPCs/self_2.tscn" id="7_48vhf"]
 [ext_resource type="PackedScene" uid="uid://bncauujavfxau" path="res://Scenes/NPCs/self.tscn" id="8_3bptm"]
 [ext_resource type="PackedScene" uid="uid://b1dkgsa8ksqaa" path="res://Scenes/Component/Lights/little_light.tscn" id="9_3cu8d"]
@@ -85,10 +85,8 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_shao2")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rlmed"]
-shader = ExtResource("2_fbru3")
-
 [node name="ClaustrohemophobiaWorld" node_paths=PackedStringArray("jails") instance=ExtResource("1_wpdnk")]
+frame_limit = 60
 enabled_camera_for_scene = true
 jails = NodePath("JailManager")
 
@@ -147,23 +145,17 @@ position = Vector2(863, 33)
 [node name="Jail13" parent="JailManager" index="12" instance=ExtResource("4_tyjn4")]
 position = Vector2(143, 338)
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="4"]
-scroll_offset = Vector2(891.444, -737.652)
+[node name="ParallaxBackground" parent="." index="4" instance=ExtResource("5_4cj6i")]
 
-[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground" index="0"]
-color = Color(1, 0.0509804, 0.0509804, 1)
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
+[node name="ParallaxLayer" parent="ParallaxBackground" index="0"]
 motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(1300, 628)
 
-[node name="Panoram" type="TextureRect" parent="ParallaxBackground/ParallaxLayer" index="0"]
-texture_repeat = 2
-material = SubResource("ShaderMaterial_rlmed")
-offset_right = 1300.0
-offset_bottom = 628.0
+[node name="TextureRect" parent="ParallaxBackground/ParallaxLayer" index="0"]
 texture = ExtResource("2_i0nfx")
-stretch_mode = 1
+
+[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground" index="1"]
+color = Color(1, 0, 0, 1)
 
 [node name="Mina" parent="." index="5" instance=ExtResource("7_48vhf")]
 position = Vector2(329, 246)
@@ -194,7 +186,7 @@ shadow_texture_scale = 0.0
 
 [node name="NextSceneArea" parent="Mina7" index="7" instance=ExtResource("10_nmjwt")]
 position = Vector2(0, -14)
-scale = Vector2(1.31973, 1.31973)
+scale = Vector2(1.4, 1.4)
 next_scene_name = "light_world"
 scene_id = 1
 spawn_player_at = Vector2(525, 450)
@@ -219,3 +211,5 @@ position = Vector2(1790, 1365)
 
 [node name="Mina14" parent="." index="18" instance=ExtResource("7_48vhf")]
 position = Vector2(1879, 1409)
+
+[editable path="ParallaxBackground"]

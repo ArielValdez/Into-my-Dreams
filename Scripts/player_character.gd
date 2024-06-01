@@ -22,8 +22,9 @@ var anim_name : String = ""
 
 var light_source : Node2D
 
-var start_walk_speed : float
-var start_run_speed : float
+@export var start_walk_speed : float
+@export var start_run_speed : float
+
 var player_collected_effects : Array[ActiveEffect]
 
 signal interaction_signal
@@ -34,8 +35,12 @@ func _init():
 func _ready() -> void:
 	Manager.player_character = self
 	
-	start_walk_speed = walk_speed
-	start_run_speed = run_speed
+	if start_walk_speed <= 0:
+		start_walk_speed = walk_speed
+	
+	if start_run_speed <= 0:
+		start_run_speed = run_speed
+	
 	super.get_sprite_from_body(sprite)
 	pass
 

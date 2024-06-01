@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WorldEvent" load_steps=3 format=3 uid="uid://c1rmh1rw1uxtk"]
+
+[ext_resource type="Script" path="res://Scripts/world_event.gd" id="1_5qbur"]
+[ext_resource type="PackedScene" uid="uid://b0seojwa8dao7" path="res://Scenes/EventsPack/self_event.tscn" id="2_i5tw4"]
+
+[resource]
+script = ExtResource("1_5qbur")
+spawned_event = ExtResource("2_i5tw4")
+ThisEventTick = 0.0
+Chance = 0.002
+Coordinates = Vector2(550, 520)
+Z_position = 1

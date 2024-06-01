@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WorldEvent" load_steps=3 format=3 uid="uid://nl4wft72wl07"]
+
+[ext_resource type="Script" path="res://Scripts/world_event.gd" id="1_4wdmc"]
+[ext_resource type="PackedScene" uid="uid://xvkrnycfig6u" path="res://Scenes/NPCs/shadow_blob.tscn" id="2_0proq"]
+
+[resource]
+script = ExtResource("1_4wdmc")
+spawned_event = ExtResource("2_0proq")
+ThisEventTick = 180.0
+Chance = 0.05
+Coordinates = Vector2(2385, 295)
+Z_position = 1
