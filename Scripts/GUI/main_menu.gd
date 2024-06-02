@@ -11,7 +11,7 @@ func _on_quit_pressed():
 
 func _on_load_pressed():
 	Manager.pause_menu.on_main_menu = false
-	pass # Replace with function body.
+	pass
 
 
 func _on_new_game_pressed():
@@ -20,4 +20,3 @@ func _on_new_game_pressed():
 	var world : Node = startin_area.instantiate()
 	get_tree().get_root().add_child(world)
 	queue_free()
-	pass # Replace with function body.

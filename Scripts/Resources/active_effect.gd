@@ -1,5 +1,4 @@
 extends Resource
-
 class_name ActiveEffect
 
 @export var ID : int

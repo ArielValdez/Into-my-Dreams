@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://di01chskprhq0"]
+
+[ext_resource type="Texture2D" uid="uid://co1bnv867as5n" path="res://Sprites/GUI/Character_Panel.png" id="1_erjkx"]
+
+[node name="LoadGameMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_erjkx")
+region_rect = Rect2(0, 0, 128, 128)
+
+[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 113.0
+offset_right = 1015.0
+offset_bottom = 541.0
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect/CenterContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="NinePatchRect/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(880, 140)
+layout_mode = 2
+text = "Empty Slot"
+
+[node name="Button2" type="Button" parent="NinePatchRect/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(880, 140)
+layout_mode = 2
+text = "Empty Slot"
+
+[node name="Button3" type="Button" parent="NinePatchRect/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(880, 140)
+layout_mode = 2
+text = "Empty Slot"
