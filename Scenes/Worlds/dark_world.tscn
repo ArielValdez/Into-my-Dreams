@@ -227,7 +227,6 @@ sources/0 = SubResource("TileSetAtlasSource_ggcqg")
 pattern_0 = SubResource("TileMapPattern_n5fod")
 
 [node name="DarkWorld" instance=ExtResource("1_1ig1j")]
-y_sort_enabled = true
 WorldEvents = Array[Resource("res://Scripts/world_event.gd")]([ExtResource("2_tdi3k"), ExtResource("2_tdi3k"), ExtResource("2_tdi3k")])
 is_looping_world = true
 enabled_camera_for_scene = true

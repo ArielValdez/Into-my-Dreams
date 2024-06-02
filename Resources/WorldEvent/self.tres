@@ -7,6 +7,6 @@
 script = ExtResource("1_5qbur")
 spawned_event = ExtResource("2_i5tw4")
 ThisEventTick = 0.0
-Chance = 0.002
+Chance = 0.001
 Coordinates = Vector2(550, 520)
 Z_position = 1

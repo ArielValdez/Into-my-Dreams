@@ -38,13 +38,13 @@ func _input(event : InputEvent) -> void:
 				
 				Manager.player_character.CanMove = true
 				Manager.player_character.position = player_position
+				Manager.player_character.IsSleeping = false
 				
 				player_on_bed = !player_on_bed
 				
 				Manager.player_character.timer_for_sleep.stop()
 				pass
 	pass
-
 
 func _on_interaction_zone_body_entered(body : Node2D) -> void:
 	if body.name == "PlayerCharacter":
