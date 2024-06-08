@@ -17,6 +17,8 @@ signal got_stabbed
 var pause_menu : Control
 var effect_menu : Control
 var effect_pop_up : Control
+var save_menu : Control
+var load_menu : Control
 
 var new_scene : PackedScene
 

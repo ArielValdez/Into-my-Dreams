@@ -2,17 +2,30 @@ extends Control
 
 @onready var startin_area = preload("res://Scenes/Worlds/House/room.tscn")
 
+@onready var button : Button = $"MarginContainer/VBoxContainer/New Game"
+
+var _on_load_game : bool = false
+
 func _ready() -> void:
 	Manager.pause_menu.on_main_menu = true
+
+func _input(event):
+	if _on_load_game and event.is_action_pressed("run_button"):
+		visible = true
+		_on_load_game = false
+		
+		Manager.load_menu.visible = _on_load_game
+		button.grab_focus()
 
 func _on_quit_pressed():
 	get_tree().quit(0)
 
-
 func _on_load_pressed():
-	Manager.pause_menu.on_main_menu = false
+	visible = false
+	_on_load_game = true
+	Manager.load_menu.visible = _on_load_game
+	Manager.load_menu.button.grab_focus()
 	pass
-
 
 func _on_new_game_pressed():
 	Manager.pause_menu.on_main_menu = false

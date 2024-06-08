@@ -6,3 +6,4 @@ extends Node
 @onready var snow_woman_sprite : Texture2D = preload("res://Sprites/Characters/PC/Yume_snow_woman.png")
 @onready var demon_sprite : Texture2D = preload("res://Sprites/Characters/PC/Yume_demon.png")
 @onready var mini_sprite : Texture2D = preload("res://Sprites/Characters/PC/shrunk_yume.png")
+@onready var front_view_sprite : Texture2D = preload("res://Sprites/Characters/PC/front_view_yume.png")

@@ -59,7 +59,6 @@ func _load_active_effects(effect : ActiveEffect, effect_is_activated : bool = fa
 				
 				Manager.effect_menu.button = container.get_child(0)
 				Manager.effect_menu.button.grab_focus()
-	pass
 
 func _load_effects():
 	for item in active_effects:

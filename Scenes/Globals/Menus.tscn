@@ -1,13 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8syvxtjb587c"]
+[gd_scene load_steps=6 format=3 uid="uid://c8syvxtjb587c"]
 
 [ext_resource type="PackedScene" uid="uid://c3rmw5n6vf0c6" path="res://Scenes/GUI/pause_menu.tscn" id="1_v5ohd"]
 [ext_resource type="PackedScene" uid="uid://b4erb3wbnpfjh" path="res://Scenes/GUI/effects_menu.tscn" id="2_1s1gh"]
 [ext_resource type="PackedScene" uid="uid://6n75dodijqf2" path="res://Scenes/GUI/collected_effect_pop_up.tscn" id="3_1g0ki"]
+[ext_resource type="PackedScene" uid="uid://di01chskprhq0" path="res://Scenes/GUI/load_game_menu.tscn" id="4_pwe5c"]
+[ext_resource type="PackedScene" uid="uid://xsep506qi0a0" path="res://Scenes/GUI/save_game_menu.tscn" id="5_ishw4"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="MenusManager" type="CanvasLayer"]
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_v5ohd")]
 
 [node name="EffectsMenu" parent="." instance=ExtResource("2_1s1gh")]
 
 [node name="CollectedEffectPopUp" parent="." instance=ExtResource("3_1g0ki")]
+
+[node name="LoadGameMenu" parent="." instance=ExtResource("4_pwe5c")]
+
+[node name="SaveGameMenu" parent="." instance=ExtResource("5_ishw4")]

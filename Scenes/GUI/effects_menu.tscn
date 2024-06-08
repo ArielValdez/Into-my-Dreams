@@ -51,8 +51,6 @@ texture = ExtResource("3_tmogi")
 hframes = 3
 vframes = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterVisual/CenterContainer"]
-
 [node name="EffectsPannel" type="NinePatchRect" parent="."]
 layout_mode = 2
 anchor_left = 0.297

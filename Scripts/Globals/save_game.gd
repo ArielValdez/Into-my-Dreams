@@ -1,14 +1,32 @@
-extends Node
+extends Resource
 class_name SaveGame
 
-const SAVE_PATH_FOR_GAME : String = "user://save"
+const SAVE_PATH_FOR_GAME : String = "user://imd_"
 
 # Limiting save files to an array of files
 #var slots
-@export var active_effects : Array[ActiveEffect]
+var active_effects : Array[ActiveEffect]
 
-func save_game() -> void:
-	var file : FileAccess = FileAccess.open(SAVE_PATH_FOR_GAME, FileAccess.WRITE)
+var path_of_effects : String = "res://Resources/Effects"
+
+func _init():
+	var dir = DirAccess.open(path_of_effects)
+	if dir != null:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name.contains(".tres"):
+			var resource : ActiveEffect = load(path_of_effects + "/" + file_name)
+			if resource.effect == YumeEffects.Value.Tutorial:
+				resource.is_active = true
+			
+			active_effects.append(resource)
+			file_name = dir.get_next()
+			pass
+		pass
+	pass
+
+func save_game(file_name : String) -> void:
+	var file : FileAccess = FileAccess.open(SAVE_PATH_FOR_GAME + file_name + ".txt", FileAccess.WRITE)
 	
 	if file != null:
 		var content : String
@@ -40,8 +58,8 @@ func save_game() -> void:
 		var error : Error = FileAccess.get_open_error()
 		printerr("File error " + str(error))
 
-func load_game() -> void:
-	var file : FileAccess = FileAccess.open(SAVE_PATH_FOR_GAME, FileAccess.READ)
+func load_game(file_name : String) -> void:
+	var file : FileAccess = FileAccess.open(SAVE_PATH_FOR_GAME + file_name + ".txt", FileAccess.READ)
 	
 	if file != null:
 		var content : String = file.get_as_text()
@@ -71,3 +89,14 @@ func load_game() -> void:
 	else:
 		var error : Error = FileAccess.get_open_error()
 		printerr("File error " + str(error))
+
+static func exists_game_file(file_name : String) -> bool:
+	var result : bool = false
+	var file : FileAccess = FileAccess.open(SAVE_PATH_FOR_GAME + file_name + ".txt", FileAccess.READ)
+	
+	if file != null:
+		result = true
+	else:
+		var error : Error = FileAccess.get_open_error()
+		printerr("File error " + str(error))
+	return result
