@@ -30,14 +30,14 @@ func _ready():
 func _process(delta):
 	if Manager.save_menu.on_save_menu:
 		get_tree().paused = true
-	else:
-		get_tree().paused = false
 
 func _input(event):
 	if Manager.save_menu.on_save_menu and event.is_action_pressed("run_button"):
 		Manager.pause_menu.can_pause = true
 		Manager.save_menu.on_save_menu = false
 		Manager.save_menu.visible = false
+		
+		get_tree().paused = false
 
 func _on_file_1_pressed():
 	file_saver_manager(name_file1)
