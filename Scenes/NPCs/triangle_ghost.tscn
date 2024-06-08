@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://4i3citdsjwim"]
 
 [ext_resource type="PackedScene" uid="uid://q4v6wgblr381" path="res://Scenes/Heritables/ncp_character.tscn" id="1_hdxv8"]
-[ext_resource type="Texture2D" uid="uid://bv4f2tg7te68g" path="res://Sprites/Characters/NCP/Trriangle_Ghost.png" id="2_x2btd"]
+[ext_resource type="Texture2D" uid="uid://bv4f2tg7te68g" path="res://Sprites/Characters/NCP/Triangle_Ghost.png" id="2_x2btd"]
 [ext_resource type="PackedScene" uid="uid://8hxefkaksqce" path="res://Scenes/States/ghost_state.tscn" id="3_8oqhg"]
 [ext_resource type="PackedScene" uid="uid://crtxwml5vk04u" path="res://Scenes/Heritables/next_scene_area.tscn" id="4_cspyi"]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bv4f2tg7te68g"
-path="res://.godot/imported/Trriangle_Ghost.png-7e1f65b7688031f0e83aa2d9d20d5d49.ctex"
+path="res://.godot/imported/Triangle_Ghost.png-45a65b5e1553d26c8a348ce31eb30e51.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Characters/NCP/Trriangle_Ghost.png"
-dest_files=["res://.godot/imported/Trriangle_Ghost.png-7e1f65b7688031f0e83aa2d9d20d5d49.ctex"]
+source_file="res://Sprites/Characters/NCP/Triangle_Ghost.png"
+dest_files=["res://.godot/imported/Triangle_Ghost.png-45a65b5e1553d26c8a348ce31eb30e51.ctex"]
 
 [params]
 

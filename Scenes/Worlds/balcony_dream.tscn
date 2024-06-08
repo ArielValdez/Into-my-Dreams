@@ -1,17 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://bmrspvxi1ihn6"]
 
 [ext_resource type="PackedScene" uid="uid://cgcj1odton3th" path="res://Scenes/Heritables/world_canvas.tscn" id="1_crucd"]
-[ext_resource type="Texture2D" uid="uid://ctbplgbxytcc5" path="res://Panorams/Night_Sky.jpg" id="2_vyvgh"]
+[ext_resource type="Texture2D" uid="uid://5rolbhpd0nb5" path="res://Sprites/Background/night_sky.png" id="2_1gc7s"]
 [ext_resource type="TileSet" uid="uid://dvwlxcsxstffo" path="res://TresObject/TileSet/simple_room.tres" id="3_a52w5"]
 [ext_resource type="PackedScene" uid="uid://crtxwml5vk04u" path="res://Scenes/Heritables/next_scene_area.tscn" id="4_177e8"]
 
 [node name="TestWorld" instance=ExtResource("1_crucd")]
-y_sort_enabled = true
 
 [node name="NightSky" type="Sprite2D" parent="." index="1"]
 z_index = -100
-position = Vector2(250, -28)
-texture = ExtResource("2_vyvgh")
+position = Vector2(1758.39, 830)
+scale = Vector2(2.74522, 2.74522)
+texture = ExtResource("2_1gc7s")
 
 [node name="TileMap" type="TileMap" parent="." index="2"]
 y_sort_enabled = true

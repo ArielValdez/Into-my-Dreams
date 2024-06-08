@@ -3,6 +3,7 @@ extends Control
 @onready var startin_area = preload("res://Scenes/Worlds/House/room.tscn")
 
 @onready var button : Button = $"MarginContainer/VBoxContainer/New Game"
+@onready var button2 : Button = $"MarginContainer/VBoxContainer/Load"
 
 var _on_load_game : bool = false
 
@@ -15,7 +16,7 @@ func _input(event):
 		_on_load_game = false
 		
 		Manager.load_menu.visible = _on_load_game
-		button.grab_focus()
+		button2.grab_focus()
 
 func _on_quit_pressed():
 	get_tree().quit(0)
