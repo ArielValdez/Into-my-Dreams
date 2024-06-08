@@ -10,6 +10,7 @@ signal go_to_next_scene
 signal got_to_jail
 signal got_effect_pop_up
 signal got_stabbed
+signal got_end_credits
 
 @onready var room_scene = preload("res://Scenes/Worlds/House/room.tscn")
 @onready var starting_area_dream_scene = preload("res://Scenes/Worlds/balcony_dream.tscn")
@@ -30,6 +31,22 @@ var enable_camera_on_scene : bool = true
 var player_character : PlayerCharacter
 var spawn_player_at : Vector2
 var world_size : Vector2
+
+func _transfer():
+	pause_menu.can_pause = false
+	
+	var tween : Tween = get_tree().create_tween()
+	tween.tween_callback(_x).set_delay(5)
+	tween = null
+
+func _x():
+	pause_menu.can_pause = true
+	
+	TransitionScene.transition()
+	await TransitionScene.on_transition_finished
+	
+	get_tree().get_root().add_child(load("res://Scenes/GUI/main_menu.tscn").instantiate())
+	get_tree().get_root().get_child(4).free()
 
 func get_world_size(current_world : TileMap) -> Vector2:
 	var world_size : Vector2 = Vector2.ZERO

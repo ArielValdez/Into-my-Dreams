@@ -65,6 +65,7 @@ func _input(event : InputEvent) -> void:
 	
 	if not Manager.effect_pop_up.on_pop_up:
 		Manager.open_door.emit(Input.is_action_just_pressed("accept_button"))
+		Manager.got_end_credits.emit(Input.is_action_just_pressed("accept_button"))
 	pass
 
 func collect_effect(in_range : bool, ncp : Enemy) -> void:

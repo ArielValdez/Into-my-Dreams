@@ -2,6 +2,8 @@ extends Control
 
 var is_paused : bool = false
 var on_main_menu : bool = true
+var can_pause : bool = true
+
 @onready var button : Button = $MarginContainer/VBoxContainer/Effects
 
 func _init() -> void:
@@ -14,7 +16,7 @@ func _process(delta : float) -> void:
 		input_pause_menu()
 
 func pause():
-	if !on_main_menu:
+	if !on_main_menu and can_pause:
 		visible = true
 		is_paused = true
 		get_tree().paused = true

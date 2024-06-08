@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnpjstkk7strl"]
+[gd_scene load_steps=6 format=3 uid="uid://dnpjstkk7strl"]
 
 [ext_resource type="PackedScene" uid="uid://cgcj1odton3th" path="res://Scenes/Heritables/world_canvas.tscn" id="1_c2jt4"]
 [ext_resource type="TileSet" uid="uid://dvwlxcsxstffo" path="res://TresObject/TileSet/simple_room.tres" id="2_jugmw"]
 [ext_resource type="PackedScene" uid="uid://bq8r5i6iru2ey" path="res://Scenes/player_character.tscn" id="3_sd4o6"]
 [ext_resource type="PackedScene" uid="uid://crtxwml5vk04u" path="res://Scenes/Heritables/next_scene_area.tscn" id="4_brwam"]
+[ext_resource type="PackedScene" uid="uid://dkl3ndiahxhvt" path="res://Scenes/Component/end_screen_area.tscn" id="5_gv4vs"]
 
 [node name="Room" instance=ExtResource("1_c2jt4")]
 
@@ -39,3 +40,7 @@ spawn_player_at = Vector2(220, 260)
 
 [node name="PlayerCharacter" parent="." index="4" instance=ExtResource("3_sd4o6")]
 position = Vector2(432, 256)
+
+[node name="EndScreen" parent="." index="5" instance=ExtResource("5_gv4vs")]
+position = Vector2(592, 128)
+scale = Vector2(1.5192, -1.29615)
