@@ -6,6 +6,8 @@ extends Control
 
 @export var save_game_resource : SaveGame
 
+var on_save_menu : bool = false
+
 var name_file3 : String = "file3"
 var name_file2 : String = "file2"
 var name_file1 : String = "file1"
@@ -25,11 +27,30 @@ func _ready():
 		button3.text = name_file3
 		button.icon = SpriteManager.front_view_sprite
 
+func _process(delta):
+	if Manager.save_menu.on_save_menu:
+		get_tree().paused = true
+	else:
+		get_tree().paused = false
+
+func _input(event):
+	if Manager.save_menu.on_save_menu and event.is_action_pressed("run_button"):
+		Manager.pause_menu.can_pause = true
+		Manager.save_menu.on_save_menu = false
+		Manager.save_menu.visible = false
+
 func _on_file_1_pressed():
-	save_game_resource.save_game(name_file1)
+	file_saver_manager(name_file1)
+	
 
 func _on_file_2_pressed():
-	save_game_resource.save_game(name_file2)
+	file_saver_manager(name_file2)
 
 func _on_file_3_pressed():
-	save_game_resource.save_game(name_file3)
+	file_saver_manager(name_file3)
+
+func file_saver_manager(name_of_file : String):
+	save_game_resource.save_game(name_of_file)
+	visible = false
+	on_save_menu = false
+	Manager.pause_menu.can_pause = true

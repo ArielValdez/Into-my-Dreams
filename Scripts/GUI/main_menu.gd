@@ -17,6 +17,14 @@ func _input(event):
 		
 		Manager.load_menu.visible = _on_load_game
 		button2.grab_focus()
+	
+	if Manager.save_menu.on_save_menu and event.is_action_pressed("run_button"):
+		get_tree().paused = false
+		
+		Manager.pause_menu.can_pause = true
+		
+		Manager.save_menu.on_save_menu = false
+		Manager.save_menu.visible = false
 
 func _on_quit_pressed():
 	get_tree().quit(0)

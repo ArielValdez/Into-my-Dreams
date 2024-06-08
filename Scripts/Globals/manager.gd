@@ -11,6 +11,7 @@ signal got_to_jail
 signal got_effect_pop_up
 signal got_stabbed
 signal got_end_credits
+signal got_to_saving
 
 @onready var room_scene = preload("res://Scenes/Worlds/House/room.tscn")
 @onready var starting_area_dream_scene = preload("res://Scenes/Worlds/balcony_dream.tscn")

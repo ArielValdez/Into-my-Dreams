@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkl3ndiahxhvt"]
 
-[ext_resource type="Script" path="res://Sprites/Components/end_screen_area.gd" id="1_7a7o4"]
+[ext_resource type="Script" path="res://Scripts/Components/end_screen_area.gd" id="1_dxhlp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2rlq1"]
 
-[node name="EndScreen" type="Node2D"]
-script = ExtResource("1_7a7o4")
+[node name="EndScreenArea" type="Node2D"]
+script = ExtResource("1_dxhlp")
 
 [node name="Area2D" type="Area2D" parent="."]
 

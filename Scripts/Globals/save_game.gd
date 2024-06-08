@@ -21,9 +21,6 @@ func _init():
 			
 			active_effects.append(resource)
 			file_name = dir.get_next()
-			pass
-		pass
-	pass
 
 func save_game(file_name : String) -> void:
 	var file : FileAccess = FileAccess.open(SAVE_PATH_FOR_GAME + file_name + ".txt", FileAccess.WRITE)
@@ -36,7 +33,7 @@ func save_game(file_name : String) -> void:
 		for effect in active_effects:
 			inner_data.append({
 					"ID": effect.ID,
-					"effect": effect.YumeEffects.Value,
+					"effect": effect.effect,
 					"is_active": effect.is_active,
 					"has_been_activated": effect.has_been_activated,
 					"can_use_outside_dream": effect.can_use_outside_dream,
@@ -94,9 +91,12 @@ static func exists_game_file(file_name : String) -> bool:
 	var result : bool = false
 	var file : FileAccess = FileAccess.open(SAVE_PATH_FOR_GAME + file_name + ".txt", FileAccess.READ)
 	
-	if file != null:
+	if file != null and file.to_string() != '':
 		result = true
 	else:
 		var error : Error = FileAccess.get_open_error()
 		printerr("File error " + str(error))
 	return result
+
+static func delete_game_file(file_name : String) -> void:
+	pass
