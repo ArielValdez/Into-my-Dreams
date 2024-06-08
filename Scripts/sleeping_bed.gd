@@ -5,6 +5,7 @@ extends Node2D
 
 @export var time_sleep : float = 5 # in seconds
 
+var tween : Tween = null
 var player_on_bed : bool = false
 var player_can_interact : bool = false
 var player_interacted : bool = false
@@ -28,9 +29,12 @@ func _input(event : InputEvent) -> void:
 				player_on_bed = !player_on_bed
 				
 				Manager.player_character.timer_for_sleep.start(time_sleep)
-				await Manager.player_character.timer_for_sleep.timeout
-				Manager.sleep_or_wake_up_next_scene()
-				Manager.player_character.IsSleeping = true
+				
+				tween = get_tree().create_tween()
+				tween.tween_callback(transfer).set_delay(time_sleep)
+				
+				#await Manager.player_character.timer_for_sleep.timeout
+				#transfer()
 				
 				pass
 			else:
@@ -43,8 +47,14 @@ func _input(event : InputEvent) -> void:
 				player_on_bed = !player_on_bed
 				
 				Manager.player_character.timer_for_sleep.stop()
+				if tween != null:
+					tween.kill()
 				pass
 	pass
+
+func transfer():
+	Manager.sleep_or_wake_up_next_scene()
+	Manager.player_character.IsSleeping = true
 
 func _on_interaction_zone_body_entered(body : Node2D) -> void:
 	if body.name == "PlayerCharacter":
