@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ijvxphvbmkbb"]
+
+[ext_resource type="PackedScene" uid="uid://cgcj1odton3th" path="res://Scenes/Heritables/world_canvas.tscn" id="1_u2xmj"]
+
+[sub_resource type="TileSet" id="TileSet_vb2vl"]
+tile_size = Vector2i(32, 32)
+
+[node name="MusicWorld" instance=ExtResource("1_u2xmj")]
+
+[node name="TileMap" type="TileMap" parent="." index="1"]
+tile_set = SubResource("TileSet_vb2vl")
+rendering_quadrant_size = 32
+format = 2
