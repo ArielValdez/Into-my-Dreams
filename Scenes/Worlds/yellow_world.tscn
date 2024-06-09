@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgbk4skay2cpa"]
+
+[ext_resource type="PackedScene" uid="uid://cgcj1odton3th" path="res://Scenes/Heritables/world_canvas.tscn" id="1_ohk8d"]
+
+[sub_resource type="TileSet" id="TileSet_k8u24"]
+tile_size = Vector2i(32, 32)
+
+[node name="BlueWorld" instance=ExtResource("1_ohk8d")]
+
+[node name="TileMap" type="TileMap" parent="." index="1"]
+tile_set = SubResource("TileSet_k8u24")
+rendering_quadrant_size = 32
+format = 2
