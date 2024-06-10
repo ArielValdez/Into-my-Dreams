@@ -170,3 +170,4 @@ z_index = 5
 position = Vector2(5680, 656)
 next_scene_name = "pink_world"
 scene_id = 2
+spawn_player_at = Vector2(416, 352)

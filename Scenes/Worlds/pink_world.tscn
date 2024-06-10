@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bd5p28ifsfc4b"]
+[gd_scene load_steps=4 format=3 uid="uid://bd5p28ifsfc4b"]
 
 [ext_resource type="PackedScene" uid="uid://cgcj1odton3th" path="res://Scenes/Heritables/world_canvas.tscn" id="1_n8upt"]
+[ext_resource type="PackedScene" uid="uid://crtxwml5vk04u" path="res://Scenes/Heritables/next_scene_area.tscn" id="2_sv1u6"]
 
 [sub_resource type="TileSet" id="TileSet_k8u24"]
 tile_size = Vector2i(32, 32)
@@ -11,3 +12,9 @@ tile_size = Vector2i(32, 32)
 tile_set = SubResource("TileSet_k8u24")
 rendering_quadrant_size = 32
 format = 2
+
+[node name="LavaWorldArea" parent="." index="2" instance=ExtResource("2_sv1u6")]
+position = Vector2(384, 320)
+next_scene_name = "lava_world"
+scene_id = 2
+spawn_player_at = Vector2(5680, 624)

@@ -43,7 +43,7 @@ layer_2/tile_data = PackedInt32Array(3473448, 0, 0)
 layer_3/name = "Decoratives"
 layer_3/tile_data = PackedInt32Array()
 
-[node name="WorldDoorway" parent="." index="2" instance=ExtResource("3_ip8pf")]
+[node name="NexusWorldDoorway" parent="." index="2" instance=ExtResource("3_ip8pf")]
 position = Vector2(1296, 1728)
 TargetWorld = "nexus"
 ID = 6
