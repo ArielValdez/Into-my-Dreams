@@ -40,7 +40,7 @@ func save_game(file_name : String) -> void:
 					"description_of_effect": effect.description_of_effect
 				})
 		if inner_data != null:
-			data = { "ActiveEffects": inner_data }
+			data = { "ActiveEffect": inner_data }
 			content = JSON.stringify(data)
 			
 			file.store_string(content)
@@ -71,15 +71,14 @@ func load_game(file_name : String) -> void:
 			printerr(json.get_error_message())
 			printerr(json.get_error_line())
 		else:
-			# func(items: ActiveEffect): items.effect == effect.effect and effect.is_active
-			var data : Array[ActiveEffect] = JSON.parse_string(json.get_parsed_text())
+			var data : Array = json.data["ActiveEffect"]
 			if data != null:
 				for effect in active_effects:
 					for d in data:
 						if effect.ID == d.ID:
+							effect.is_active = d.is_active
 							effect.can_use_outside_dream = d.can_use_outside_dream
 							effect.has_been_activated = d.has_been_activated
-							effect.is_active = d.is_active
 			else:
 				printerr("Failed to load saved data.")
 		json = null

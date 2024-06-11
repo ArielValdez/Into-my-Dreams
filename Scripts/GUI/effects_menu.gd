@@ -1,3 +1,4 @@
+class_name EffectsMenu
 extends Control
 
 var button : Button

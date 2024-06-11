@@ -28,25 +28,19 @@ func _ready():
 		button.icon = SpriteManager.front_view_sprite
 
 func _on_file_1_pressed():
-	if SaveGame.exists_game_file(name_file1):
-		save_game_resource.load_game(name_file1)
-		
-		var world : Node = startin_area.instantiate()
-		get_tree().get_root().add_child(world)
-		queue_free()
+	load_file(name_file1)
 
 func _on_file_2_pressed():
-	if SaveGame.exists_game_file(name_file2):
-		save_game_resource.load_game(name_file2)
-		
-		var world : Node = startin_area.instantiate()
-		get_tree().get_root().add_child(world)
-		queue_free()
+	load_file(name_file2)
 
 func _on_file_3_pressed():
-	if SaveGame.exists_game_file(name_file3):
-		save_game_resource.load_game(name_file3)
+	load_file(name_file3)
+
+func load_file(file_name : String):
+	if SaveGame.exists_game_file(file_name):
+		save_game_resource.load_game(file_name)
 		
 		var world : Node = startin_area.instantiate()
 		get_tree().get_root().add_child(world)
 		queue_free()
+		Manager.reloaded_effects.emit()

@@ -54,3 +54,4 @@ func file_saver_manager(name_of_file : String):
 	visible = false
 	on_save_menu = false
 	Manager.pause_menu.can_pause = true
+	get_tree().paused = false

@@ -1,3 +1,4 @@
+class_name EffectsGUI
 extends GridContainer
 
 @export var button_size : Vector2
@@ -19,22 +20,17 @@ func _init():
 			
 			active_effects.append(resource)
 			file_name = dir.get_next()
-			pass
-		pass
-	pass
 
 func _ready():
 	# get the number of effects that exists then change the count of the array to it
 	# all effects except tutorial should be put as inactive
 	Manager.connect("effect_collected", obtain_new_effect)
 	_load_effects()
-	pass
+	Manager.reloaded_effects.connect(_load_effects)
 
 func obtain_new_effect(effect : ActiveEffect, activate_effect : bool = true):
 	_load_active_effects(effect, activate_effect)
 	# play animation saying "new effect gotten" from a new GUI
-	
-	pass
 
 func _load_active_effects(effect : ActiveEffect, effect_is_activated : bool = false):
 	#load active effects with load in gridContainer with buttons
@@ -50,28 +46,26 @@ func _load_active_effects(effect : ActiveEffect, effect_is_activated : bool = fa
 			if item.is_active:
 				item.has_been_activated = effect_is_activated
 				
-				var button : Button = Button.new()
-				button.text = YumeEffects.Value.keys()[item.effect]
-				button.set_custom_minimum_size(button_size)
-				# connect pressed signal with the script
-				button.pressed.connect(Callable(Manager.character_effect).bind(item))
-				container.add_child(button)
-				
-				Manager.effect_menu.button = container.get_child(0)
-				Manager.effect_menu.button.grab_focus()
+				grab_button(item)
 
 func _load_effects():
+	if container.get_child_count() > 0:
+		remove_children()
+	
 	for item in active_effects:
 		if item.is_active and item.has_been_activated:
-			var button : Button = Button.new()
-			button.text = YumeEffects.Value.keys()[item.effect]
-			button.set_custom_minimum_size(button_size)
-			# connect pressed signal with the script
-			button.pressed.connect(Callable(Manager.character_effect).bind(item))
-			container.add_child(button)
-			
-			Manager.effect_menu.button = container.get_child(0)
-			Manager.effect_menu.button.grab_focus()
+			grab_button(item)
+
+func grab_button(item : ActiveEffect):
+	var button : Button = Button.new()
+	button.text = YumeEffects.Value.keys()[item.effect]
+	button.set_custom_minimum_size(button_size)
+	
+	button.pressed.connect(Callable(Manager.character_effect).bind(item))
+	container.add_child(button)
+	
+	Manager.effect_menu.button = container.get_child(0)
+	Manager.effect_menu.button.grab_focus()
 
 func remove_children():
 	for item in container.get_children():
