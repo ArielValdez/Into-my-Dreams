@@ -34,9 +34,10 @@ var player_character : PlayerCharacter
 var spawn_player_at : Vector2
 var world_size : Vector2
 
+func _ready():
+	load_resources()
+
 func _transfer():
-	pause_menu.can_pause = false
-	
 	var tween : Tween = get_tree().create_tween()
 	tween.tween_callback(_x).set_delay(5)
 	tween = null
@@ -49,6 +50,8 @@ func _x():
 	
 	get_tree().get_root().add_child(load("res://Scenes/GUI/main_menu.tscn").instantiate())
 	get_tree().get_root().get_child(4).free()
+	
+	reload_resources()
 
 func get_world_size(current_world : TileMap) -> Vector2:
 	var world_size : Vector2 = Vector2.ZERO
@@ -158,3 +161,19 @@ func transform_player(effect : YumeEffects.Value, sprite_transformation : Textur
 		player_character.walk_speed = walk_speed_change
 		player_character.run_speed = run_speed_change
 		pass
+
+func load_resources():
+	ResourceLoader.load("res://Resources/Effects/Demon.tres", "", ResourceLoader.CACHE_MODE_REUSE)
+	ResourceLoader.load("res://Resources/Effects/Dream.tres", "", ResourceLoader.CACHE_MODE_REUSE)
+	ResourceLoader.load("res://Resources/Effects/Killer.tres", "", ResourceLoader.CACHE_MODE_REUSE)
+	ResourceLoader.load("res://Resources/Effects/Mini.tres", "", ResourceLoader.CACHE_MODE_REUSE)
+	ResourceLoader.load("res://Resources/Effects/Tutorial.tres", "", ResourceLoader.CACHE_MODE_REUSE)
+	ResourceLoader.load("res://Resources/Effects/YukiOnna.tres", "", ResourceLoader.CACHE_MODE_REUSE)
+
+func reload_resources():
+	ResourceLoader.load("res://Resources/Effects/Demon.tres", "", ResourceLoader.CACHE_MODE_REPLACE)
+	ResourceLoader.load("res://Resources/Effects/Dream.tres", "", ResourceLoader.CACHE_MODE_REPLACE)
+	ResourceLoader.load("res://Resources/Effects/Killer.tres", "", ResourceLoader.CACHE_MODE_REPLACE)
+	ResourceLoader.load("res://Resources/Effects/Mini.tres", "", ResourceLoader.CACHE_MODE_REPLACE)
+	ResourceLoader.load("res://Resources/Effects/Tutorial.tres", "", ResourceLoader.CACHE_MODE_REPLACE)
+	ResourceLoader.load("res://Resources/Effects/YukiOnna.tres", "", ResourceLoader.CACHE_MODE_REPLACE)

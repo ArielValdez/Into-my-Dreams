@@ -5,19 +5,10 @@ extends Control
 @onready var button : Button = $"MarginContainer/VBoxContainer/New Game"
 @onready var button2 : Button = $"MarginContainer/VBoxContainer/Load"
 
-var _on_load_game : bool = false
-
 func _ready() -> void:
 	Manager.pause_menu.on_main_menu = true
 
 func _input(event):
-	if _on_load_game and event.is_action_pressed("run_button"):
-		visible = true
-		_on_load_game = false
-		
-		Manager.load_menu.visible = _on_load_game
-		button2.grab_focus()
-	
 	if Manager.save_menu.on_save_menu and event.is_action_pressed("run_button"):
 		get_tree().paused = false
 		
@@ -31,8 +22,8 @@ func _on_quit_pressed():
 
 func _on_load_pressed():
 	visible = false
-	_on_load_game = true
-	Manager.load_menu.visible = _on_load_game
+	Manager.load_menu._on_load_game = true
+	Manager.load_menu.visible = Manager.load_menu._on_load_game
 	Manager.load_menu.button.grab_focus()
 	pass
 

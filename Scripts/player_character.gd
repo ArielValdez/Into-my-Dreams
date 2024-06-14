@@ -64,10 +64,10 @@ func _input(event : InputEvent) -> void:
 		effect_powers()
 	
 	if not Manager.effect_pop_up.on_pop_up:
-		Manager.open_door.emit(Input.is_action_just_pressed("accept_button"))
-		Manager.got_end_credits.emit(Input.is_action_just_pressed("accept_button"))
-		Manager.got_to_saving.emit(Input.is_action_just_pressed("accept_button"))
-	pass
+		if Input.is_action_just_pressed("accept_button"):
+			Manager.open_door.emit(Input.is_action_just_pressed("accept_button"))
+			Manager.got_end_credits.emit(Input.is_action_just_pressed("accept_button"))
+			Manager.got_to_saving.emit(Input.is_action_just_pressed("accept_button"))
 
 func collect_effect(in_range : bool, ncp : Enemy) -> void:
 	if Input.is_action_just_pressed("accept_button"):

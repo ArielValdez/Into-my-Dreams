@@ -12,6 +12,8 @@ var name_file3 : String = "file3"
 var name_file2 : String = "file2"
 var name_file1 : String = "file1"
 
+var _on_load_game : bool = false
+
 func _ready():
 	visible = false
 	Manager.load_menu = self
@@ -27,6 +29,13 @@ func _ready():
 		button3.text = name_file3
 		button.icon = SpriteManager.front_view_sprite
 
+func _input(event):
+	if _on_load_game and event.is_action_pressed("run_button"):
+		visible = false
+		_on_load_game = false
+		
+		button2.grab_focus()
+
 func _on_file_1_pressed():
 	load_file(name_file1)
 
@@ -40,7 +49,10 @@ func load_file(file_name : String):
 	if SaveGame.exists_game_file(file_name):
 		save_game_resource.load_game(file_name)
 		
+		_on_load_game = false
 		var world : Node = startin_area.instantiate()
+		
 		get_tree().get_root().add_child(world)
 		queue_free()
+		
 		Manager.reloaded_effects.emit()
