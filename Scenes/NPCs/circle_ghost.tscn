@@ -97,3 +97,4 @@ walk_end = 0.5
 position = Vector2(0, -12)
 next_scene_name = "red_world"
 scene_id = 1
+spawn_player_at = Vector2(2100, 2100)
