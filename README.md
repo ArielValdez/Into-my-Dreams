@@ -3,16 +3,9 @@ Dream simulator inspired by Yume Nikki
 
 <p align="center"><img src="https://github.com/ArielValdez/Mech-Workshop-Service-Track/assets/65257215/d17f0eca-30fc-48dc-adb6-1c7a9149343c"/></p>
 
-## Ideas
-* The theme of the game is feeling of judgement
-* Lucidity levels: there are places that cannot be accessed normally, and they are block by the levels of lucidity
-    * Said levels are hidden levels
-    * Lucidity levels up by collecting certain number of effects
-* Other abilities: These are abilities that are passive to the player, and changes a bit gameplay
-* Isometric maps and platformer like maps
-* Minigames on a TV at the start of the game (just like Yume Nikki)
-* Inner Demon: NPC that randomly spawns in a world the PC is in, and would try to wake up forcibly the PC
-* No fighting just walk
-* World events: Events that happen randomly when in a world
-* Random events when an action is done
-* Garanteed events when an action is done
+## Known bugs
+* Save and load destroys end game screen
+* Going to end screen and reentering does not reload resources, same with load
+* Octitate object on characterBody2D destroys performance of the game.
+* OVER ALL, THIS BAD ATTEMPT TO MAKE A GAME IS A BAD ATTEMPT.
+     * Even then, I had a lot of fun creating this game
