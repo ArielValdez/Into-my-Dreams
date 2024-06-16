@@ -73,3 +73,4 @@ position = Vector2(0, -14)
 scale = Vector2(1.95747, 1.00438)
 next_scene_name = "blue_world"
 scene_id = 2
+spawn_player_at = Vector2(532, 1550)

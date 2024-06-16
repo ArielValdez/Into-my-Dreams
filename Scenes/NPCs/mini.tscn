@@ -1,21 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyvym3o45eo6"]
+[gd_scene load_steps=6 format=3 uid="uid://dyvym3o45eo6"]
 
-[ext_resource type="PackedScene" uid="uid://q4v6wgblr381" path="res://Scenes/Heritables/ncp_character.tscn" id="1_g5vqo"]
-[ext_resource type="Texture2D" uid="uid://bkfm5vf6bvptu" path="res://Sprites/Characters/NCP/Sprite_Npc.png" id="2_60r4w"]
+[ext_resource type="PackedScene" uid="uid://q4v6wgblr381" path="res://Scenes/Heritables/ncp_character.tscn" id="1_shbie"]
+[ext_resource type="Texture2D" uid="uid://bkfm5vf6bvptu" path="res://Sprites/Characters/NCP/Sprite_Npc.png" id="2_bxpch"]
+[ext_resource type="Resource" uid="uid://oeqqd34waw1g" path="res://Resources/Effects/Mini.tres" id="2_kc6tr"]
+[ext_resource type="PackedScene" uid="uid://8hxefkaksqce" path="res://Scenes/States/ghost_state.tscn" id="3_at3tr"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6iqmf"]
-size = Vector2(8, 8)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rtxqa"]
+size = Vector2(10, 10)
 
-[node name="Mini" instance=ExtResource("1_g5vqo")]
-collision_layer = 2
-collision_mask = 15
+[node name="NCPCharacter" instance=ExtResource("1_shbie")]
+held_effect = ExtResource("2_kc6tr")
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(0, -4)
-shape = SubResource("RectangleShape2D_6iqmf")
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_rtxqa")
 
 [node name="Sprite2D" parent="." index="2"]
 position = Vector2(0, -16)
-texture = ExtResource("2_60r4w")
+texture = ExtResource("2_bxpch")
 
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="StateMachine" parent="." index="4" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("GhostState")
+
+[node name="GhostState" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy") instance=ExtResource("3_at3tr")]
+enemy = NodePath("../..")
+move_speed = 4.0
+walk_start = 5.0
+walk_end = 12.0

@@ -550,7 +550,7 @@ collision_layer = 1
 [node name="TriangleGhost" parent="." index="6" instance=ExtResource("6_736e6")]
 position = Vector2(3888, 1728)
 
-[node name="SquareGhost" parent="." index="7" instance=ExtResource("11_kqgq7")]
+[node name="LineGhost" parent="." index="7" instance=ExtResource("11_kqgq7")]
 position = Vector2(640, 3917)
 
 [node name="Thing" parent="." index="8" instance=ExtResource("12_3120l")]
