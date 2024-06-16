@@ -1,13 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwkna0riivs5x"]
+[gd_scene load_steps=5 format=3 uid="uid://dwkna0riivs5x"]
 
 [ext_resource type="PackedScene" uid="uid://cgcj1odton3th" path="res://Scenes/Heritables/world_canvas.tscn" id="1_g2ygl"]
+[ext_resource type="PackedScene" uid="uid://d3qrxxdy87y7l" path="res://Scenes/Component/world_wrap_bounderies.tscn" id="2_nxjpc"]
+[ext_resource type="PackedScene" uid="uid://btwvlndqfesvl" path="res://Scenes/Component/octicate_object.tscn" id="3_qgclk"]
 
 [sub_resource type="TileSet" id="TileSet_k8u24"]
 tile_size = Vector2i(32, 32)
 
-[node name="PinkWorld" instance=ExtResource("1_g2ygl")]
+[node name="BlueWorld" instance=ExtResource("1_g2ygl")]
+is_looping_world = true
+enabled_camera_for_scene = true
 
 [node name="TileMap" type="TileMap" parent="." index="1"]
 tile_set = SubResource("TileSet_k8u24")
 rendering_quadrant_size = 32
 format = 2
+
+[node name="WorldWrapBounderies" parent="." index="2" node_paths=PackedStringArray("tilemap") instance=ExtResource("2_nxjpc")]
+tilemap = NodePath("../TileMap")
+
+[node name="OcticateObject" parent="." index="3" node_paths=PackedStringArray("parent", "object", "world_boundaries") instance=ExtResource("3_qgclk")]
+parent = NodePath("..")
+object = NodePath("../TileMap")
+world_boundaries = NodePath("../TileMap")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." index="4"]
+color = Color(0.417621, 0.275658, 1, 1)

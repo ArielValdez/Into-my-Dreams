@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://20ifv0ibs70r"]
+[gd_scene load_steps=9 format=3 uid="uid://20ifv0ibs70r"]
 
 [ext_resource type="PackedScene" uid="uid://cgcj1odton3th" path="res://Scenes/Heritables/world_canvas.tscn" id="1_8yrmc"]
 [ext_resource type="Texture2D" uid="uid://uy7qhr5rbj2g" path="res://Sprites/Tiles/red_world_tiles.png" id="2_56yc3"]
 [ext_resource type="PackedScene" uid="uid://crtxwml5vk04u" path="res://Scenes/Heritables/next_scene_area.tscn" id="3_f3bw5"]
 [ext_resource type="PackedScene" uid="uid://d3qrxxdy87y7l" path="res://Scenes/Component/world_wrap_bounderies.tscn" id="4_ulpax"]
+[ext_resource type="PackedScene" uid="uid://bncauujavfxau" path="res://Scenes/NPCs/self.tscn" id="5_j87jy"]
+[ext_resource type="PackedScene" uid="uid://c5ub3ibenlgtf" path="res://Scenes/NPCs/weird_red_bulb.tscn" id="6_jmfdi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ycjvx"]
 texture = ExtResource("2_56yc3")
@@ -125,7 +127,7 @@ next_scene_name = "glowing_mushroom_world"
 scene_id = 2
 spawn_player_at = Vector2(3500, 1400)
 
-[node name="GlowingMushroomWorldtSceneArea2" parent="." index="3" instance=ExtResource("3_f3bw5")]
+[node name="InfinitySnowCaveWorldSceneArea" parent="." index="3" instance=ExtResource("3_f3bw5")]
 position = Vector2(1984, 561)
 scale = Vector2(2.14264, 1.17664)
 next_scene_name = "infinity_snow_cave_world"
@@ -134,3 +136,46 @@ spawn_player_at = Vector2(5350, 200)
 
 [node name="WorldWrapBounderies" parent="." index="4" node_paths=PackedStringArray("tilemap") instance=ExtResource("4_ulpax")]
 tilemap = NodePath("../TileMap")
+
+[node name="NPCFolder" type="Node" parent="." index="5"]
+
+[node name="Mina" parent="NPCFolder" index="0" instance=ExtResource("5_j87jy")]
+position = Vector2(246, 193)
+
+[node name="StateMachine" parent="NPCFolder/Mina" index="5" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("self_depretiation_chace")
+
+[node name="Mina2" parent="NPCFolder" index="1" instance=ExtResource("5_j87jy")]
+position = Vector2(2138, 1714)
+
+[node name="WeirdRedBulb" parent="NPCFolder" index="2" instance=ExtResource("6_jmfdi")]
+position = Vector2(328, 647)
+
+[node name="WeirdRedBulb2" parent="NPCFolder" index="3" instance=ExtResource("6_jmfdi")]
+position = Vector2(1361, 254)
+
+[node name="WeirdRedBulb3" parent="NPCFolder" index="4" instance=ExtResource("6_jmfdi")]
+position = Vector2(1590, 1083)
+
+[node name="WeirdRedBulb4" parent="NPCFolder" index="5" instance=ExtResource("6_jmfdi")]
+position = Vector2(393, 1348)
+
+[node name="WeirdRedBulb5" parent="NPCFolder" index="6" instance=ExtResource("6_jmfdi")]
+position = Vector2(887, 972)
+
+[node name="WeirdRedBulb6" parent="NPCFolder" index="7" instance=ExtResource("6_jmfdi")]
+position = Vector2(738, 1900)
+
+[node name="WeirdRedBulb7" parent="NPCFolder" index="8" instance=ExtResource("6_jmfdi")]
+position = Vector2(1389, 1766)
+
+[node name="WeirdRedBulb8" parent="NPCFolder" index="9" instance=ExtResource("6_jmfdi")]
+position = Vector2(1683, 2091)
+
+[node name="WeirdRedBulb9" parent="NPCFolder" index="10" instance=ExtResource("6_jmfdi")]
+position = Vector2(255, 1708)
+
+[node name="WeirdRedBulb10" parent="NPCFolder" index="11" instance=ExtResource("6_jmfdi")]
+position = Vector2(1436, 1411)
+
+[editable path="NPCFolder/Mina"]

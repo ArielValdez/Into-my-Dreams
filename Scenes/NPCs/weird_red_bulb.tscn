@@ -1,0 +1,122 @@
+[gd_scene load_steps=11 format=3 uid="uid://c5ub3ibenlgtf"]
+
+[ext_resource type="PackedScene" uid="uid://q4v6wgblr381" path="res://Scenes/Heritables/ncp_character.tscn" id="1_g106r"]
+[ext_resource type="Texture2D" uid="uid://dk864fqbpf4tk" path="res://Sprites/Characters/NCP/weird_red_bulb.png" id="2_i55e1"]
+[ext_resource type="PackedScene" uid="uid://8g7dy18uf4a" path="res://Scenes/States/idle_snow_woman.tscn" id="3_tyjkj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3d8gd"]
+
+[sub_resource type="Animation" id="Animation_8fxpi"]
+resource_name = "walk_down"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 2]
+}
+
+[sub_resource type="Animation" id="Animation_pq8nr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_spor7"]
+resource_name = "walk_run"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 2]
+}
+
+[sub_resource type="Animation" id="Animation_nb0t5"]
+resource_name = "walk_left"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 2]
+}
+
+[sub_resource type="Animation" id="Animation_26loi"]
+resource_name = "walk_right"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jwrda"]
+_data = {
+"RESET": SubResource("Animation_pq8nr"),
+"walk_down": SubResource("Animation_8fxpi"),
+"walk_left": SubResource("Animation_nb0t5"),
+"walk_right": SubResource("Animation_26loi"),
+"walk_run": SubResource("Animation_spor7")
+}
+
+[node name="WeirdRedBulb" instance=ExtResource("1_g106r")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_3d8gd")
+
+[node name="Sprite2D" parent="." index="2"]
+position = Vector2(0, -19)
+texture = ExtResource("2_i55e1")
+hframes = 3
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_jwrda")
+}
+
+[node name="StateMachine" parent="." index="4" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("IdleSnowWoman")
+
+[node name="IdleSnowWoman" parent="StateMachine" index="0" node_paths=PackedStringArray("enemy") instance=ExtResource("3_tyjkj")]
+enemy = NodePath("../..")
+is_animation_stop = true
