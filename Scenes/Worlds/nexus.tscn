@@ -90,8 +90,8 @@ sources/0 = SubResource("TileSetAtlasSource_cefyo")
 WorldEvents = Array[Resource("res://Scripts/world_event.gd")]([ExtResource("2_an5dr")])
 enabled_camera_for_scene = true
 camera_limit_off_set = Vector2(-64, -64)
-metadata/_edit_horizontal_guides_ = [490.0, -1075.0]
-metadata/_edit_vertical_guides_ = [515.0]
+metadata/_edit_horizontal_guides_ = [0.0, -1075.0]
+metadata/_edit_vertical_guides_ = [0.0]
 
 [node name="TileMap" type="TileMap" parent="." index="0"]
 y_sort_enabled = true

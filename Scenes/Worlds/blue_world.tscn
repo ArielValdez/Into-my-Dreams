@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwkna0riivs5x"]
+[gd_scene load_steps=12 format=3 uid="uid://dwkna0riivs5x"]
 
 [ext_resource type="PackedScene" uid="uid://cgcj1odton3th" path="res://Scenes/Heritables/world_canvas.tscn" id="1_g2ygl"]
 [ext_resource type="PackedScene" uid="uid://d3qrxxdy87y7l" path="res://Scenes/Component/world_wrap_bounderies.tscn" id="2_nxjpc"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://crtxwml5vk04u" path="res://Scenes/Heritables/next_scene_area.tscn" id="6_qhn5e"]
 [ext_resource type="PackedScene" uid="uid://d0o3wx50lbsnh" path="res://Scenes/NPCs/thing.tscn" id="7_ork22"]
 [ext_resource type="PackedScene" uid="uid://dyvym3o45eo6" path="res://Scenes/NPCs/mini.tscn" id="8_11ied"]
+[ext_resource type="PackedScene" uid="uid://bq8r5i6iru2ey" path="res://Scenes/player_character.tscn" id="9_cq4qx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l3aj6"]
 texture = ExtResource("2_rb5sm")
@@ -353,11 +354,17 @@ position = Vector2(2888, 420)
 [node name="Thing9" parent="NPCFolder" index="8" instance=ExtResource("7_ork22")]
 position = Vector2(4096, 821)
 
+[node name="Mini" parent="NPCFolder" index="9" instance=ExtResource("8_11ied")]
+position = Vector2(724, 399)
+walk_speed = 10.0
+run_speed = 10.0
+
 [node name="PinkWorldtSceneArea" parent="." index="7" instance=ExtResource("6_qhn5e")]
 position = Vector2(1632, 2719)
 scale = Vector2(1.79819, 1.79819)
 next_scene_name = "pink_world"
 scene_id = 5
+spawn_player_at = Vector2(2430, 1625)
 
-[node name="NCPCharacter" parent="." index="8" instance=ExtResource("8_11ied")]
-position = Vector2(3441, 645)
+[node name="PlayerCharacter" parent="." index="8" instance=ExtResource("9_cq4qx")]
+position = Vector2(3563, 2717)
