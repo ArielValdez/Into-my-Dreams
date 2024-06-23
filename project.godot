@@ -11,9 +11,12 @@ config_version=5
 [application]
 
 config/name="Into my Dreams"
+config/version="0.1"
 run/main_scene="res://Scenes/GUI/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://Sprites/Characters/PC/front_view_yume.png"
+config/icon="res://Sprites/GUI/Logo_IntoDreams.png"
 
 [autoload]
 
@@ -110,3 +113,4 @@ effect_action={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+anti_aliasing/quality/msaa_2d=1
